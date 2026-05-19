@@ -1,0 +1,2290 @@
+<!DOCTYPE html>
+<!-- saved from url=(0052)file:///Users/yasmani/Downloads/mind-tense-os_2.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mind Tense OS</title>
+<link href="./Mind Tense OS_files/css2" rel="stylesheet">
+<style>
+:root {
+  --bg: #050508;
+  --surface: #0d0d14;
+  --card: #111118;
+  --border: #1e1e2e;
+  --accent: #7c3aed;
+  --accent2: #06b6d4;
+  --accent3: #f59e0b;
+  --red: #ef4444;
+  --green: #10b981;
+  --text: #e8e8f0;
+  --muted: #4a4a6a;
+  --dim: #2a2a3e;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Syne', sans-serif;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Animated background */
+body::before {
+  content: '';
+  position: fixed;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(ellipse at 20% 50%, rgba(124,58,237,0.06) 0%, transparent 50%),
+              radial-gradient(ellipse at 80% 20%, rgba(6,182,212,0.04) 0%, transparent 50%),
+              radial-gradient(ellipse at 50% 80%, rgba(245,158,11,0.03) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.container { position: relative; z-index: 1; max-width: 800px; margin: 0 auto; padding: 32px 16px 100px; }
+
+/* HEADER */
+header { text-align: center; margin-bottom: 36px; padding-top: 12px; }
+
+.header-eyebrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 4px;
+  color: var(--accent2);
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+header h1 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 64px;
+  letter-spacing: 6px;
+  background: linear-gradient(135deg, #fff 0%, #7c3aed 40%, #06b6d4 80%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  line-height: 1;
+  margin-bottom: 6px;
+}
+
+header p {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--muted);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+/* STATS */
+.stats-row { display: flex; gap: 8px; margin-bottom: 28px; }
+.stat {
+  flex: 1;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 12px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.stat::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+}
+.stat:nth-child(1)::before { background: var(--accent); }
+.stat:nth-child(2)::before { background: var(--accent2); }
+.stat:nth-child(3)::before { background: var(--accent3); }
+.stat:nth-child(4)::before { background: var(--green); }
+.stat-num { font-family: 'Bebas Neue', sans-serif; font-size: 30px; color: var(--text); line-height: 1; }
+.stat-label { font-family: 'JetBrains Mono', monospace; font-size: 8px; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; margin-top: 2px; }
+
+/* TABS */
+.tab-bar {
+  display: flex;
+  gap: 2px;
+  margin-bottom: 24px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 4px;
+}
+.tab-btn {
+  flex: 1;
+  background: transparent;
+  border: none;
+  color: var(--muted);
+  padding: 9px 8px;
+  border-radius: 7px;
+  font-family: 'Syne', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+  letter-spacing: 0.5px;
+}
+.tab-btn.active {
+  background: linear-gradient(135deg, var(--accent), #5b21b6);
+  color: white;
+}
+.tab-btn:hover:not(.active) { color: var(--text); }
+
+.tab-panel { display: none; }
+.tab-panel.active { display: block; }
+
+/* ADD FORM */
+.add-form {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 16px;
+  margin-bottom: 20px;
+}
+.form-label { font-family: 'JetBrains Mono', monospace; font-size: 9px; color: var(--accent2); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 10px; display: block; }
+.form-row { display: flex; gap: 8px; margin-bottom: 8px; }
+
+input, select, textarea {
+  background: var(--card);
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 10px 12px;
+  border-radius: 8px;
+  font-family: 'Syne', sans-serif;
+  font-size: 12px;
+  outline: none;
+  transition: border-color 0.2s;
+  width: 100%;
+}
+input:focus, select:focus, textarea:focus { border-color: var(--accent); }
+select option { background: var(--card); }
+textarea { resize: none; height: 70px; line-height: 1.5; }
+
+.add-btn {
+  background: linear-gradient(135deg, var(--accent), #5b21b6);
+  color: white;
+  border: none;
+  padding: 11px;
+  border-radius: 8px;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 15px;
+  letter-spacing: 2px;
+  cursor: pointer;
+  width: 100%;
+  transition: opacity 0.2s;
+}
+.add-btn:hover { opacity: 0.85; }
+
+.section-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  color: var(--muted);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+/* FILTERS */
+.filters { display: flex; gap: 6px; margin-bottom: 16px; flex-wrap: wrap; }
+.filter-btn {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--muted);
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  cursor: pointer;
+  transition: all 0.2s;
+  letter-spacing: 1px;
+}
+.filter-btn.active, .filter-btn:hover { border-color: var(--accent); color: var(--accent); }
+
+/* VIDEO CARDS */
+.videos-list { display: flex; flex-direction: column; gap: 12px; }
+
+.video-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  overflow: hidden;
+  transition: border-color 0.2s;
+  position: relative;
+}
+.video-card.done { opacity: 0.4; border-color: var(--green); }
+.video-card.dragging { opacity: 0.3; border-color: var(--accent) !important; }
+.video-card.drag-over { border-color: var(--accent2) !important; border-style: dashed; }
+
+.video-card::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 3px;
+}
+.video-card.cat-history::before { background: var(--accent3); }
+.video-card.cat-science::before { background: var(--accent2); }
+.video-card.cat-crime::before { background: var(--red); }
+.video-card.cat-space::before { background: var(--accent); }
+.video-card.cat-survival::before { background: var(--green); }
+.video-card.cat-other::before { background: var(--muted); }
+
+.card-main { padding: 14px 14px 14px 18px; }
+.card-top { display: flex; gap: 10px; align-items: flex-start; }
+
+.drag-handle { color: var(--dim); cursor: grab; font-size: 16px; flex-shrink: 0; margin-top: 2px; user-select: none; transition: color 0.2s; }
+.drag-handle:hover { color: var(--muted); }
+.drag-handle:active { cursor: grabbing; }
+
+.check-btn {
+  width: 22px; height: 22px;
+  border-radius: 6px;
+  border: 2px solid var(--border);
+  background: transparent;
+  cursor: pointer;
+  flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 11px;
+  transition: all 0.2s;
+  margin-top: 1px;
+}
+.video-card.done .check-btn { background: var(--green); border-color: var(--green); }
+
+.card-content { flex: 1; min-width: 0; }
+
+.card-num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 11px;
+  color: var(--accent);
+  letter-spacing: 2px;
+  margin-bottom: 3px;
+}
+
+.video-title { font-size: 13px; font-weight: 700; line-height: 1.4; margin-bottom: 6px; color: var(--text); }
+.video-card.done .video-title { text-decoration: line-through; color: var(--muted); }
+
+.card-meta { display: flex; gap: 5px; flex-wrap: wrap; margin-bottom: 10px; align-items: center; }
+
+.tag { font-family: 'JetBrains Mono', monospace; font-size: 9px; padding: 3px 7px; border-radius: 4px; letter-spacing: 0.5px; font-weight: 500; text-transform: uppercase; }
+.tag-cat-history { background: rgba(245,158,11,0.1); color: var(--accent3); border: 1px solid rgba(245,158,11,0.2); }
+.tag-cat-science { background: rgba(6,182,212,0.1); color: var(--accent2); border: 1px solid rgba(6,182,212,0.2); }
+.tag-cat-crime { background: rgba(239,68,68,0.1); color: var(--red); border: 1px solid rgba(239,68,68,0.2); }
+.tag-cat-space { background: rgba(124,58,237,0.1); color: var(--accent); border: 1px solid rgba(124,58,237,0.2); }
+.tag-cat-survival { background: rgba(16,185,129,0.1); color: var(--green); border: 1px solid rgba(16,185,129,0.2); }
+.tag-cat-other { background: rgba(74,74,106,0.15); color: var(--muted); border: 1px solid var(--border); }
+.tag-posted { background: rgba(16,185,129,0.1); color: var(--green); border: 1px solid rgba(16,185,129,0.2); }
+.tag-dur { background: rgba(255,255,255,0.04); color: var(--muted); border: 1px solid var(--border); }
+
+.card-actions { display: flex; gap: 6px; }
+
+.expand-btn {
+  background: rgba(124,58,237,0.1);
+  border: 1px solid rgba(124,58,237,0.2);
+  color: var(--accent);
+  font-size: 10px;
+  padding: 5px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-family: 'JetBrains Mono', monospace;
+  transition: all 0.2s;
+  letter-spacing: 0.5px;
+}
+.expand-btn:hover { background: rgba(124,58,237,0.2); }
+
+.delete-btn {
+  background: transparent;
+  border: none;
+  color: var(--dim);
+  cursor: pointer;
+  font-size: 14px;
+  padding: 2px 4px;
+  transition: color 0.2s;
+  margin-left: auto;
+}
+.delete-btn:hover { color: var(--red); }
+
+/* EXPANDED CONTENT */
+.expanded-section { border-top: 1px solid var(--border); display: none; }
+.expanded-section.open { display: block; }
+
+.exp-tabs {
+  display: flex;
+  border-bottom: 1px solid var(--border);
+}
+.exp-tab {
+  flex: 1;
+  background: transparent;
+  border: none;
+  color: var(--muted);
+  padding: 10px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.2s;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+}
+.exp-tab.active { color: var(--accent2); border-bottom-color: var(--accent2); }
+
+.exp-panel { display: none; padding: 14px 16px; }
+.exp-panel.active { display: block; }
+
+/* SCRIPT */
+.script-block { margin-bottom: 12px; }
+.script-section-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 8px;
+  color: var(--accent2);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+.script-text {
+  font-size: 13px;
+  line-height: 1.7;
+  color: var(--text);
+  background: rgba(255,255,255,0.02);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 10px 12px;
+}
+.hook-text {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--accent3);
+  line-height: 1.5;
+}
+
+/* SHOT LIST */
+.shot-items { display: flex; flex-direction: column; gap: 6px; margin-bottom: 10px; }
+.shot-item {
+  display: flex; align-items: flex-start; gap: 8px;
+  background: rgba(255,255,255,0.02);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 8px 10px;
+}
+.shot-item.shot-done { opacity: 0.45; }
+.shot-num { font-family: 'Bebas Neue', sans-serif; font-size: 16px; color: var(--accent); min-width: 18px; flex-shrink: 0; line-height: 1.2; }
+.shot-check { width: 18px; height: 18px; border-radius: 4px; border: 2px solid var(--border); background: transparent; cursor: pointer; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 10px; transition: all 0.2s; margin-top: 1px; }
+.shot-item.shot-done .shot-check { background: var(--green); border-color: var(--green); }
+.shot-text { font-size: 12px; flex: 1; line-height: 1.4; color: var(--text); }
+.shot-item.shot-done .shot-text { text-decoration: line-through; color: var(--muted); }
+.shot-delete { background: transparent; border: none; color: var(--dim); cursor: pointer; font-size: 11px; padding: 2px; transition: color 0.2s; flex-shrink: 0; margin-left: auto; }
+.shot-delete:hover { color: var(--red); }
+
+.add-shot-row { display: flex; gap: 6px; }
+.add-shot-row input { font-size: 11px; padding: 7px 10px; height: auto; }
+.add-shot-btn { background: rgba(6,182,212,0.1); border: 1px solid rgba(6,182,212,0.2); color: var(--accent2); padding: 7px 12px; border-radius: 8px; cursor: pointer; font-size: 18px; flex-shrink: 0; transition: all 0.2s; line-height: 1; }
+.add-shot-btn:hover { background: rgba(6,182,212,0.2); }
+
+/* ANALYTICS TAB */
+.analytics-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 12px; }
+.analytics-item { background: rgba(255,255,255,0.02); border: 1px solid var(--border); border-radius: 8px; padding: 10px; }
+.analytics-label { font-family: 'JetBrains Mono', monospace; font-size: 8px; color: var(--muted); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 4px; }
+.analytics-input { background: transparent; border: none; color: var(--accent2); font-family: 'Bebas Neue', sans-serif; font-size: 22px; width: 100%; outline: none; }
+.analytics-input::placeholder { color: var(--dim); }
+
+.empty { text-align: center; color: var(--muted); padding: 40px 20px; font-family: 'JetBrains Mono', monospace; font-size: 11px; }
+.empty span { display: block; font-size: 28px; margin-bottom: 8px; }
+
+/* IDEAS TAB */
+.idea-item {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 12px;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.idea-num { font-family: 'Bebas Neue', sans-serif; font-size: 20px; color: var(--accent); min-width: 24px; }
+.idea-text { font-size: 13px; flex: 1; line-height: 1.4; }
+.idea-use-btn {
+  background: rgba(124,58,237,0.1);
+  border: 1px solid rgba(124,58,237,0.2);
+  color: var(--accent);
+  font-size: 9px;
+  padding: 5px 8px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: 'JetBrains Mono', monospace;
+  white-space: nowrap;
+  transition: all 0.2s;
+}
+.idea-use-btn:hover { background: rgba(124,58,237,0.2); }
+
+/* SCHEDULE TAB */
+.sched-item {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 12px;
+  margin-bottom: 8px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.sched-day { font-family: 'Bebas Neue', sans-serif; font-size: 13px; color: var(--accent2); min-width: 30px; letter-spacing: 1px; }
+.sched-tip { font-size: 12px; color: var(--text); flex: 1; line-height: 1.4; }
+.sched-time { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--accent3); white-space: nowrap; }
+</style>
+</head>
+<body>
+<div class="container">
+
+<header>
+  <div class="header-eyebrow">Content Operating System</div>
+  <h1>MIND TENSE</h1>
+  <p>Viral Shorts Engine · History · Science · Crime · Space</p>
+</header>
+
+<div class="stats-row">
+  <div class="stat"><div class="stat-num" id="st-total">10</div><div class="stat-label">Videos</div></div>
+  <div class="stat"><div class="stat-num" id="st-todo" style="color:var(--accent2)">6</div><div class="stat-label">To Film</div></div>
+  <div class="stat"><div class="stat-num" id="st-posted" style="color:var(--green)">4</div><div class="stat-label">Posted</div></div>
+  <div class="stat"><div class="stat-num" id="st-views" style="color:var(--accent3)">11.2K</div><div class="stat-label">Total Views</div></div>
+</div>
+
+<div class="tab-bar">
+  <button class="tab-btn active" onclick="switchTab(&#39;videos&#39;,this)">📹 Videos</button>
+  <button class="tab-btn" onclick="switchTab(&#39;ideas&#39;,this)">💡 Ideas</button>
+  <button class="tab-btn" onclick="switchTab(&#39;schedule&#39;,this)">📅 Schedule</button>
+</div>
+
+<!-- VIDEOS TAB -->
+<div class="tab-panel active" id="panel-videos">
+  <div class="filters">
+    <button class="filter-btn active" onclick="setFilter(&#39;all&#39;,this)">All</button>
+    <button class="filter-btn" onclick="setFilter(&#39;history&#39;,this)">History</button>
+    <button class="filter-btn" onclick="setFilter(&#39;science&#39;,this)">Science</button>
+    <button class="filter-btn" onclick="setFilter(&#39;crime&#39;,this)">Crime</button>
+    <button class="filter-btn" onclick="setFilter(&#39;space&#39;,this)">Space</button>
+    <button class="filter-btn" onclick="setFilter(&#39;todo&#39;,this)">To Film</button>
+    <button class="filter-btn" onclick="setFilter(&#39;posted&#39;,this)">Posted</button>
+  </div>
+
+  <div class="add-form">
+    <span class="form-label">+ Add New Video Idea</span>
+    <div class="form-row"><input type="text" id="v-title" placeholder="Video title..."></div>
+    <div class="form-row"><textarea id="v-hook" placeholder="Hook (first 3 seconds of script)..."></textarea></div>
+    <div class="form-row">
+      <select id="v-cat">
+        <option value="history">📜 History</option>
+        <option value="science">🔬 Science</option>
+        <option value="crime">🔍 Crime</option>
+        <option value="space">🚀 Space</option>
+        <option value="survival">🧠 Survival</option>
+        <option value="other">Other</option>
+      </select>
+      <select id="v-dur">
+        <option value="0:20">~0:20</option>
+        <option value="0:30" selected="">~0:30</option>
+        <option value="0:35">~0:35</option>
+        <option value="0:45">~0:45</option>
+      </select>
+    </div>
+    <button class="add-btn" onclick="addVideo()">ADD VIDEO</button>
+  </div>
+
+  <div class="section-label">All Videos — drag ⠿ to reorder</div>
+  <div class="videos-list" id="videos-list"><div class="video-card cat-history" id="vcard-1" draggable="true" ondragstart="dragStart(event,1)" ondragover="dragOver(event,1)" ondragleave="dragLeave(event)" ondrop="dragDrop(event,1)" ondragend="dragEnd()">
+      <div class="card-main">
+        <div class="card-top">
+          <span class="drag-handle">⠿</span>
+          <button class="check-btn" onclick="toggleDone(1)"></button>
+          <div class="card-content">
+            <div class="card-num">VIDEO 01</div>
+            <div class="video-title">The Soldier Who Kept Fighting Until 1974</div>
+            <div class="card-meta">
+              <span class="tag tag-cat-history">📜 History</span>
+              <span class="tag tag-dur">0:30</span>
+              
+              
+            </div>
+            <div class="card-actions">
+              <button class="expand-btn" onclick="toggleExpand(1)">
+                📋 Script &amp; Shots (0/6) ▼
+              </button>
+              <button class="delete-btn" onclick="delVideo(1)">✕</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="expanded-section" id="exp-1">
+        <div class="exp-tabs">
+          <button class="exp-tab active" onclick="switchExpTab(1,&#39;script&#39;)">SCRIPT</button>
+          <button class="exp-tab" onclick="switchExpTab(1,&#39;shots&#39;)">SHOTS (0/6)</button>
+          <button class="exp-tab" onclick="switchExpTab(1,&#39;analytics&#39;)">ANALYTICS</button>
+        </div>
+        <div class="exp-panel active" id="exp-script-1">
+          <div class="script-block">
+            <div class="script-section-label">Hook</div>
+            <div class="script-text hook-text">This soldier kept fighting World War 2 for 29 years after it ended… because nobody told him.</div>
+          </div>
+          <div class="script-block">
+            <div class="script-section-label">Full Script</div>
+            <div class="script-text" style="white-space:pre-line;font-size:12px">In 1945, Japanese soldier Hiroo Onoda was stationed in the Philippine jungle with one order: never surrender.
+
+So he didn't.
+
+While the world moved on, built cities, landed on the moon… Onoda was still fighting.
+
+He ambushed supply convoys. He evaded search parties. He survived on bananas and whatever he could hunt.
+
+When people came into the jungle with newspapers to prove the war was over, he thought it was propaganda.
+
+It took until 1974 — nearly 30 years later — for his original commanding officer to fly to the Philippines, enter the jungle, and personally relieve him of duty.
+
+Onoda walked out of that jungle still in uniform, rifle in hand, loyal to a war that had ended before most people alive today were born.
+
+He didn't surrender. He was relieved.</div>
+          </div>
+        </div>
+        <div class="exp-panel" id="exp-shots-1">
+          <div class="shot-items">
+            
+              <div class="shot-item">
+                <span class="shot-num">1</span>
+                <button class="shot-check" onclick="toggleShot(1,1)"></button>
+                <span class="shot-text">Black screen open — white text: 'Japan, 1945.' Dramatic ambient sound</span>
+                <button class="shot-delete" onclick="delShot(1,1)">✕</button>
+              </div>
+              <div class="shot-item">
+                <span class="shot-num">2</span>
+                <button class="shot-check" onclick="toggleShot(1,2)"></button>
+                <span class="shot-text">Stock footage or animated map of Philippine jungle</span>
+                <button class="shot-delete" onclick="delShot(1,2)">✕</button>
+              </div>
+              <div class="shot-item">
+                <span class="shot-num">3</span>
+                <button class="shot-check" onclick="toggleShot(1,3)"></button>
+                <span class="shot-text">Text on screen: 'His orders: Never surrender.'</span>
+                <button class="shot-delete" onclick="delShot(1,3)">✕</button>
+              </div>
+              <div class="shot-item">
+                <span class="shot-num">4</span>
+                <button class="shot-check" onclick="toggleShot(1,4)"></button>
+                <span class="shot-text">Timeline graphic — 1945 → 1950 → 1960 → 1974 with world events shown</span>
+                <button class="shot-delete" onclick="delShot(1,4)">✕</button>
+              </div>
+              <div class="shot-item">
+                <span class="shot-num">5</span>
+                <button class="shot-check" onclick="toggleShot(1,5)"></button>
+                <span class="shot-text">Newspaper headline graphic: 'War Ends'</span>
+                <button class="shot-delete" onclick="delShot(1,5)">✕</button>
+              </div>
+              <div class="shot-item">
+                <span class="shot-num">6</span>
+                <button class="shot-check" onclick="toggleShot(1,6)"></button>
+                <span class="shot-text">Final frame: Onoda emerging from jungle — photo or recreation text card</span>
+                <button class="shot-delete" onclick="delShot(1,6)">✕</button>
+              </div>
+          </div>
+          <div class="add-shot-row">
+            <input id="shot-in-1" type="text" placeholder="Add shot description..." onkeydown="if(event.key===&#39;Enter&#39;)addShot(1)">
+            <button class="add-shot-btn" onclick="addShot(1)">+</button>
+          </div>
+        </div>
+        <div class="exp-panel" id="exp-analytics-1">
+          <div class="analytics-grid">
+            <div class="analytics-item">
+              <div class="analytics-label">Views</div>
+              <input class="analytics-input" type="number" value="" placeholder="0" oninput="updateAnalytic(1,&#39;views&#39;,this.value)">
+            </div>
+            <div class="analytics-item">
+              <div class="analytics-label">Likes</div>
+              <input class="analytics-input" type="number" value="" placeholder="0" oninput="updateAnalytic(1,&#39;likes&#39;,this.value)">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div><div class="video-card cat-science" id="vcard-2" draggable="true" ondragstart="dragStart(event,2)" ondragover="dragOver(event,2)" ondragleave="dragLeave(event)" ondrop="dragDrop(event,2)" ondragend="dragEnd()">
+      <div class="card-main">
+        <div class="card-top">
+          <span class="drag-handle">⠿</span>
+          <button class="check-btn" onclick="toggleDone(2)"></button>
+          <div class="card-content">
+            <div class="card-num">VIDEO 02</div>
+            <div class="video-title">The Disease That Makes You Stop Sleeping Forever</div>
+            <div class="card-meta">
+              <span class="tag tag-cat-science">🔬 Science</span>
+              <span class="tag tag-dur">0:30</span>
+              
+              
+            </div>
+            <div class="card-actions">
+              <button class="expand-btn" onclick="toggleExpand(2)">
+                📋 Script &amp; Shots (0/5) ▼
+              </button>
+              <button class="delete-btn" onclick="delVideo(2)">✕</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="expanded-section" id="exp-2">
+        <div class="exp-tabs">
+          <button class="exp-tab active" onclick="switchExpTab(2,&#39;script&#39;)">SCRIPT</button>
+          <button class="exp-tab" onclick="switchExpTab(2,&#39;shots&#39;)">SHOTS (0/5)</button>
+          <button class="exp-tab" onclick="switchExpTab(2,&#39;analytics&#39;)">ANALYTICS</button>
+        </div>
+        <div class="exp-panel active" id="exp-script-2">
+          <div class="script-block">
+            <div class="script-section-label">Hook</div>
+            <div class="script-text hook-text">There is a disease that makes it impossible to sleep… and it's always fatal.</div>
+          </div>
+          <div class="script-block">
+            <div class="script-section-label">Full Script</div>
+            <div class="script-text" style="white-space:pre-line;font-size:12px">It's called Fatal Familial Insomnia.
+
+It starts with mild sleep problems. Then vivid hallucinations. Then a complete inability to sleep at all.
+
+Your body doesn't know how to stop being awake.
+
+Within months, your organs begin to fail. Your mind deteriorates. You experience dreams while fully conscious.
+
+And then you die — not from a virus, not from a wound — but from the simple inability to sleep.
+
+What makes it even more terrifying: it's genetic. It runs in families. Some people already know they carry it.
+
+There is no cure. No treatment. No way out.
+
+And the last thought they ever have… is that they just want to close their eyes.</div>
+          </div>
+        </div>
+        <div class="exp-panel" id="exp-shots-2">
+          <div class="shot-items">
+            
+              <div class="shot-item">
+                <span class="shot-num">1</span>
+                <button class="shot-check" onclick="toggleShot(2,1)"></button>
+                <span class="shot-text">Dark bedroom, clock reading 3am — eerie ambient tone</span>
+                <button class="shot-delete" onclick="delShot(2,1)">✕</button>
+              </div>
+              <div class="shot-item">
+                <span class="shot-num">2</span>
+                <button class="shot-check" onclick="toggleShot(2,2)"></button>
+                <span class="shot-text">Text card: 'Fatal Familial Insomnia' — slow zoom</span>
+                <button class="shot-delete" onclick="delShot(2,2)">✕</button>
+              </div>
+              <div class="shot-item">
+                <span class="shot-num">3</span>
+                <button class="shot-check" onclick="toggleShot(2,3)"></button>
+                <span class="shot-text">Medical diagram animation — brain waves going flat</span>
+                <button class="shot-delete" onclick="delShot(2,3)">✕</button>
+              </div>
+              <div class="shot-item">
+                <span class="shot-num">4</span>
+                <button class="shot-check" onclick="toggleShot(2,4)"></button>
+                <span class="shot-text">Timeline: Week 1 → Month 3 → Month 6 → Death</span>
+                <button class="shot-delete" onclick="delShot(2,4)">✕</button>
+              </div>
+              <div class="shot-item">
+                <span class="shot-num">5</span>
+                <button class="shot-check" onclick="toggleShot(2,5)"></button>
+                <span class="shot-text">Final frame: close up of closed eye — then slow open</span>
+                <button class="shot-delete" onclick="delShot(2,5)">✕</button>
+              </div>
+          </div>
+          <div class="add-shot-row">
+            <input id="shot-in-2" type="text" placeholder="Add shot description..." onkeydown="if(event.key===&#39;Enter&#39;)addShot(2)">
+            <button class="add-shot-btn" onclick="addShot(2)">+</button>
+          </div>
+        </div>
+        <div class="exp-panel" id="exp-analytics-2">
+          <div class="analytics-grid">
+            <div class="analytics-item">
+              <div class="analytics-label">Views</div>
+              <input class="analytics-input" type="number" value="" placeholder="0" oninput="updateAnalytic(2,&#39;views&#39;,this.value)">
+            </div>
+            <div class="analytics-item">
+              <div class="analytics-label">Likes</div>
+              <input class="analytics-input" type="number" value="" placeholder="0" oninput="updateAnalytic(2,&#39;likes&#39;,this.value)">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div><div class="video-card cat-crime done" id="vcard-3" draggable="true" ondragstart="dragStart(event,3)" ondragover="dragOver(event,3)" ondragleave="dragLeave(event)" ondrop="dragDrop(event,3)" ondragend="dragEnd()">
+      <div class="card-main">
+        <div class="card-top">
+          <span class="drag-handle">⠿</span>
+          <button class="check-btn" onclick="toggleDone(3)">✓</button>
+          <div class="card-content">
+            <div class="card-num">VIDEO 03</div>
+            <div class="video-title">He Hacked NASA at 15 Then the FBI Showed Up</div>
+            <div class="card-meta">
+              <span class="tag tag-cat-crime">🔍 Crime</span>
+              <span class="tag tag-dur">0:35</span>
+              <span class="tag tag-posted">✓ Posted</span>
+              <span class="tag tag-dur">👁 3.5K</span>
+            </div>
+            <div class="card-actions">
+              <button class="expand-btn" onclick="toggleExpand(3)">
+                📋 Script &amp; Shots (0/6) ▼
+              </button>
+              <button class="delete-btn" onclick="delVideo(3)">✕</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="expanded-section" id="exp-3">
+        <div class="exp-tabs">
+          <button class="exp-tab active" onclick="switchExpTab(3,&#39;script&#39;)">SCRIPT</button>
+          <button class="exp-tab" onclick="switchExpTab(3,&#39;shots&#39;)">SHOTS (0/6)</button>
+          <button class="exp-tab" onclick="switchExpTab(3,&#39;analytics&#39;)">ANALYTICS</button>
+        </div>
+        <div class="exp-panel active" id="exp-script-3">
+          <div class="script-block">
+            <div class="script-section-label">Hook</div>
+            <div class="script-text hook-text">A 15-year-old hacked NASA, shut down their systems for 21 days… and did it from his bedroom.</div>
+          </div>
+          <div class="script-block">
+            <div class="script-section-label">Full Script</div>
+            <div class="script-text" style="white-space:pre-line;font-size:12px">Jonathan James wasn't a prodigy. He was just bored.
+
+In 1999, he broke into NASA's network and downloaded $1.7 million worth of source code — software that controlled the temperature and humidity of the International Space Station.
+
+NASA had to shut down their systems for 21 days to investigate.
+
+He also broke into the US Department of Defense. He intercepted thousands of military emails.
+
+When the FBI finally knocked on his door, they found a teenager in a hoodie.
+
+He was sentenced to 6 months house arrest — the first juvenile to be imprisoned for cybercrime in the US.
+
+He died in 2008 at 24 years old.
+
+His note said he had no faith in the justice system.
+
+The kid who hacked NASA… never got justice himself.</div>
+          </div>
+        </div>
+        <div class="exp-panel" id="exp-shots-3">
+          <div class="shot-items">
+            
+              <div class="shot-item">
+                <span class="shot-num">1</span>
+                <button class="shot-check" onclick="toggleShot(3,1)"></button>
+                <span class="shot-text">Retro computer screen, green terminal text — dark room</span>
+                <button class="shot-delete" onclick="delShot(3,1)">✕</button>
+              </div>
+              <div class="shot-item">
+                <span class="shot-num">2</span>
+                <button class="shot-check" onclick="toggleShot(3,2)"></button>
+                <span class="shot-text">Text: 'Age 15. Bedroom. 1999.' — typewriter sound</span>
+                <button class="shot-delete" onclick="delShot(3,2)">✕</button>
+              </div>
+              <div class="shot-item">
+                <span class="shot-num">3</span>
+                <button class="shot-check" onclick="toggleShot(3,3)"></button>
+                <span class="shot-text">NASA logo graphic — then glitch effect</span>
+                <button class="shot-delete" onclick="delShot(3,3)">✕</button>
+              </div>
+              <div class="shot-item">
+                <span class="shot-num">4</span>
+                <button class="shot-check" onclick="toggleShot(3,4)"></button>
+                <span class="shot-text">News headline graphic: 'NASA Systems Shut Down 21 Days'</span>
+                <button class="shot-delete" onclick="delShot(3,4)">✕</button>
+              </div>
+              <div class="shot-item">
+                <span class="shot-num">5</span>
+                <button class="shot-check" onclick="toggleShot(3,5)"></button>
+                <span class="shot-text">FBI badge graphic — knock sound effect</span>
+                <button class="shot-delete" onclick="delShot(3,5)">✕</button>
+              </div>
+              <div class="shot-item">
+                <span class="shot-num">6</span>
+                <button class="shot-check" onclick="toggleShot(3,6)"></button>
+                <span class="shot-text">Final frame: His name and dates. Dark, minimal.</span>
+                <button class="shot-delete" onclick="delShot(3,6)">✕</button>
+              </div>
+          </div>
+          <div class="add-shot-row">
+            <input id="shot-in-3" type="text" placeholder="Add shot description..." onkeydown="if(event.key===&#39;Enter&#39;)addShot(3)">
+            <button class="add-shot-btn" onclick="addShot(3)">+</button>
+          </div>
+        </div>
+        <div class="exp-panel" id="exp-analytics-3">
+          <div class="analytics-grid">
+            <div class="analytics-item">
+              <div class="analytics-label">Views</div>
+              <input class="analytics-input" type="number" value="3507" placeholder="0" oninput="updateAnalytic(3,&#39;views&#39;,this.value)">
+            </div>
+            <div class="analytics-item">
+              <div class="analytics-label">Likes</div>
+              <input class="analytics-input" type="number" value="49" placeholder="0" oninput="updateAnalytic(3,&#39;likes&#39;,this.value)">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div><div class="video-card cat-history done" id="vcard-4" draggable="true" ondragstart="dragStart(event,4)" ondragover="dragOver(event,4)" ondragleave="dragLeave(event)" ondrop="dragDrop(event,4)" ondragend="dragEnd()">
+      <div class="card-main">
+        <div class="card-top">
+          <span class="drag-handle">⠿</span>
+          <button class="check-btn" onclick="toggleDone(4)">✓</button>
+          <div class="card-content">
+            <div class="card-num">VIDEO 04</div>
+            <div class="video-title">The Man Who Survived Two Atomic Bombs</div>
+            <div class="card-meta">
+              <span class="tag tag-cat-history">📜 History</span>
+              <span class="tag tag-dur">0:34</span>
+              <span class="tag tag-posted">✓ Posted</span>
+              <span class="tag tag-dur">👁 1.6K</span>
+            </div>
+            <div class="card-actions">
+              <button class="expand-btn" onclick="toggleExpand(4)">
+                📋 Script &amp; Shots (0/5) ▼
+              </button>
+              <button class="delete-btn" onclick="delVideo(4)">✕</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="expanded-section" id="exp-4">
+        <div class="exp-tabs">
+          <button class="exp-tab active" onclick="switchExpTab(4,&#39;script&#39;)">SCRIPT</button>
+          <button class="exp-tab" onclick="switchExpTab(4,&#39;shots&#39;)">SHOTS (0/5)</button>
+          <button class="exp-tab" onclick="switchExpTab(4,&#39;analytics&#39;)">ANALYTICS</button>
+        </div>
+        <div class="exp-panel active" id="exp-script-4">
+          <div class="script-block">
+            <div class="script-section-label">Hook</div>
+            <div class="script-text hook-text">One man survived both atomic bombs dropped on Japan. This is not a myth.</div>
+          </div>
+          <div class="script-block">
+            <div class="script-section-label">Full Script</div>
+            <div class="script-text" style="white-space:pre-line;font-size:12px">His name was Tsutomu Yamaguchi.
+
+On August 6, 1945, he was on a business trip in Hiroshima when the first bomb dropped. He survived — burned, eardrums blown out, but alive.
+
+He treated his wounds and got on a train back home.
+
+Home was Nagasaki.
+
+On August 9th, he was telling his boss about the bomb in Hiroshima when the second one dropped — right outside the window.
+
+He survived again.
+
+He was officially recognized as the only person documented to have survived both bombings.
+
+He lived to be 93 years old.
+
+When asked what it felt like, he said: "I thought it was the end of the world."
+
+Twice.</div>
+          </div>
+        </div>
+        <div class="exp-panel" id="exp-shots-4">
+          <div class="shot-items">
+            
+              <div class="shot-item">
+                <span class="shot-num">1</span>
+                <button class="shot-check" onclick="toggleShot(4,1)"></button>
+                <span class="shot-text">Black and white aerial footage graphic — Hiroshima</span>
+                <button class="shot-delete" onclick="delShot(4,1)">✕</button>
+              </div>
+              <div class="shot-item">
+                <span class="shot-num">2</span>
+                <button class="shot-check" onclick="toggleShot(4,2)"></button>
+                <span class="shot-text">Map: Hiroshima → train track → Nagasaki</span>
+                <button class="shot-delete" onclick="delShot(4,2)">✕</button>
+              </div>
+              <div class="shot-item">
+                <span class="shot-num">3</span>
+                <button class="shot-check" onclick="toggleShot(4,3)"></button>
+                <span class="shot-text">Text: 'August 6. Then August 9.' — stark, minimal</span>
+                <button class="shot-delete" onclick="delShot(4,3)">✕</button>
+              </div>
+              <div class="shot-item">
+                <span class="shot-num">4</span>
+                <button class="shot-check" onclick="toggleShot(4,4)"></button>
+                <span class="shot-text">Photo of Yamaguchi (or illustrated card)</span>
+                <button class="shot-delete" onclick="delShot(4,4)">✕</button>
+              </div>
+              <div class="shot-item">
+                <span class="shot-num">5</span>
+                <button class="shot-check" onclick="toggleShot(4,5)"></button>
+                <span class="shot-text">Final quote card: 'I thought it was the end of the world. Twice.'</span>
+                <button class="shot-delete" onclick="delShot(4,5)">✕</button>
+              </div>
+          </div>
+          <div class="add-shot-row">
+            <input id="shot-in-4" type="text" placeholder="Add shot description..." onkeydown="if(event.key===&#39;Enter&#39;)addShot(4)">
+            <button class="add-shot-btn" onclick="addShot(4)">+</button>
+          </div>
+        </div>
+        <div class="exp-panel" id="exp-analytics-4">
+          <div class="analytics-grid">
+            <div class="analytics-item">
+              <div class="analytics-label">Views</div>
+              <input class="analytics-input" type="number" value="1606" placeholder="0" oninput="updateAnalytic(4,&#39;views&#39;,this.value)">
+            </div>
+            <div class="analytics-item">
+              <div class="analytics-label">Likes</div>
+              <input class="analytics-input" type="number" value="23" placeholder="0" oninput="updateAnalytic(4,&#39;likes&#39;,this.value)">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div><div class="video-card cat-science" id="vcard-5" draggable="true" ondragstart="dragStart(event,5)" ondragover="dragOver(event,5)" ondragleave="dragLeave(event)" ondrop="dragDrop(event,5)" ondragend="dragEnd()">
+      <div class="card-main">
+        <div class="card-top">
+          <span class="drag-handle">⠿</span>
+          <button class="check-btn" onclick="toggleDone(5)"></button>
+          <div class="card-content">
+            <div class="card-num">VIDEO 05</div>
+            <div class="video-title">The Surgery Performed on Himself in Antarctica</div>
+            <div class="card-meta">
+              <span class="tag tag-cat-science">🔬 Science</span>
+              <span class="tag tag-dur">0:30</span>
+              
+              
+            </div>
+            <div class="card-actions">
+              <button class="expand-btn" onclick="toggleExpand(5)">
+                📋 Script &amp; Shots (0/6) ▼
+              </button>
+              <button class="delete-btn" onclick="delVideo(5)">✕</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="expanded-section" id="exp-5">
+        <div class="exp-tabs">
+          <button class="exp-tab active" onclick="switchExpTab(5,&#39;script&#39;)">SCRIPT</button>
+          <button class="exp-tab" onclick="switchExpTab(5,&#39;shots&#39;)">SHOTS (0/6)</button>
+          <button class="exp-tab" onclick="switchExpTab(5,&#39;analytics&#39;)">ANALYTICS</button>
+        </div>
+        <div class="exp-panel active" id="exp-script-5">
+          <div class="script-block">
+            <div class="script-section-label">Hook</div>
+            <div class="script-text hook-text">A doctor was alone in Antarctica with appendicitis. So he operated on himself.</div>
+          </div>
+          <div class="script-block">
+            <div class="script-section-label">Full Script</div>
+            <div class="script-text" style="white-space:pre-line;font-size:12px">It was 1961. Soviet doctor Leonid Rogozov was stationed at a remote Antarctic base.
+
+There was no way out. No way to evacuate. No other doctor.
+
+His appendix was failing. He had days to live if he did nothing.
+
+So he did something no one had ever done.
+
+He set up a mirror, picked up a scalpel, and cut himself open.
+
+With no anesthesia except local numbing, unable to see directly, working by feel — he removed his own appendix in two hours.
+
+He stitched himself closed, cleaned up, and was back on his feet five days later.
+
+He went on to become one of the most celebrated doctors in Russian history.
+
+The operation took two hours. The scar lasted a lifetime.</div>
+          </div>
+        </div>
+        <div class="exp-panel" id="exp-shots-5">
+          <div class="shot-items">
+            
+              <div class="shot-item">
+                <span class="shot-num">1</span>
+                <button class="shot-check" onclick="toggleShot(5,1)"></button>
+                <span class="shot-text">Aerial shot of Antarctica — isolation, white nothing</span>
+                <button class="shot-delete" onclick="delShot(5,1)">✕</button>
+              </div>
+              <div class="shot-item">
+                <span class="shot-num">2</span>
+                <button class="shot-check" onclick="toggleShot(5,2)"></button>
+                <span class="shot-text">Medical diagram: appendix location highlighted red</span>
+                <button class="shot-delete" onclick="delShot(5,2)">✕</button>
+              </div>
+              <div class="shot-item">
+                <span class="shot-num">3</span>
+                <button class="shot-check" onclick="toggleShot(5,3)"></button>
+                <span class="shot-text">Text: '1961. No evacuation. No other doctor.' — slow reveal</span>
+                <button class="shot-delete" onclick="delShot(5,3)">✕</button>
+              </div>
+              <div class="shot-item">
+                <span class="shot-num">4</span>
+                <button class="shot-check" onclick="toggleShot(5,4)"></button>
+                <span class="shot-text">Surgical tools graphic — scalpel closeup</span>
+                <button class="shot-delete" onclick="delShot(5,4)">✕</button>
+              </div>
+              <div class="shot-item">
+                <span class="shot-num">5</span>
+                <button class="shot-check" onclick="toggleShot(5,5)"></button>
+                <span class="shot-text">Photo of Rogozov (or illustrated card with dates)</span>
+                <button class="shot-delete" onclick="delShot(5,5)">✕</button>
+              </div>
+              <div class="shot-item">
+                <span class="shot-num">6</span>
+                <button class="shot-check" onclick="toggleShot(5,6)"></button>
+                <span class="shot-text">Final frame: '2 hours. Self-operated. Survived.'</span>
+                <button class="shot-delete" onclick="delShot(5,6)">✕</button>
+              </div>
+          </div>
+          <div class="add-shot-row">
+            <input id="shot-in-5" type="text" placeholder="Add shot description..." onkeydown="if(event.key===&#39;Enter&#39;)addShot(5)">
+            <button class="add-shot-btn" onclick="addShot(5)">+</button>
+          </div>
+        </div>
+        <div class="exp-panel" id="exp-analytics-5">
+          <div class="analytics-grid">
+            <div class="analytics-item">
+              <div class="analytics-label">Views</div>
+              <input class="analytics-input" type="number" value="" placeholder="0" oninput="updateAnalytic(5,&#39;views&#39;,this.value)">
+            </div>
+            <div class="analytics-item">
+              <div class="analytics-label">Likes</div>
+              <input class="analytics-input" type="number" value="" placeholder="0" oninput="updateAnalytic(5,&#39;likes&#39;,this.value)">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div><div class="video-card cat-science done" id="vcard-6" draggable="true" ondragstart="dragStart(event,6)" ondragover="dragOver(event,6)" ondragleave="dragLeave(event)" ondrop="dragDrop(event,6)" ondragend="dragEnd()">
+      <div class="card-main">
+        <div class="card-top">
+          <span class="drag-handle">⠿</span>
+          <button class="check-btn" onclick="toggleDone(6)">✓</button>
+          <div class="card-content">
+            <div class="card-num">VIDEO 06</div>
+            <div class="video-title">The Volcano Invisible to Radar That Nearly Started a War</div>
+            <div class="card-meta">
+              <span class="tag tag-cat-science">🔬 Science</span>
+              <span class="tag tag-dur">0:30</span>
+              <span class="tag tag-posted">✓ Posted</span>
+              <span class="tag tag-dur">👁 5.1K</span>
+            </div>
+            <div class="card-actions">
+              <button class="expand-btn" onclick="toggleExpand(6)">
+                📋 Script &amp; Shots (0/5) ▼
+              </button>
+              <button class="delete-btn" onclick="delVideo(6)">✕</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="expanded-section" id="exp-6">
+        <div class="exp-tabs">
+          <button class="exp-tab active" onclick="switchExpTab(6,&#39;script&#39;)">SCRIPT</button>
+          <button class="exp-tab" onclick="switchExpTab(6,&#39;shots&#39;)">SHOTS (0/5)</button>
+          <button class="exp-tab" onclick="switchExpTab(6,&#39;analytics&#39;)">ANALYTICS</button>
+        </div>
+        <div class="exp-panel active" id="exp-script-6">
+          <div class="script-block">
+            <div class="script-section-label">Hook</div>
+            <div class="script-text hook-text">A volcano collapsed so perfectly it became invisible to radar… and almost started a war.</div>
+          </div>
+          <div class="script-block">
+            <div class="script-section-label">Full Script</div>
+            <div class="script-text" style="white-space:pre-line;font-size:12px">The Tavita Volcano in the South Pacific had a caldera — a collapsed crater — that sat below the ocean's surface.
+
+Military radar flying over the area picked up nothing. No mass. No signature.
+
+But submarines passing underneath detected massive geological instability.
+
+Two nations in the region began pointing fingers at each other — claiming the other was testing underwater weapons.
+
+Tension escalated. Navies mobilized.
+
+It took a joint scientific team six weeks to figure out that what they were detecting wasn't a weapon — it was a volcano exhaling.
+
+The war never happened.
+
+Because one volcano decided to disappear.</div>
+          </div>
+        </div>
+        <div class="exp-panel" id="exp-shots-6">
+          <div class="shot-items">
+            
+              <div class="shot-item">
+                <span class="shot-num">1</span>
+                <button class="shot-check" onclick="toggleShot(6,1)"></button>
+                <span class="shot-text">Radar screen graphic — sweeping line finds nothing</span>
+                <button class="shot-delete" onclick="delShot(6,1)">✕</button>
+              </div>
+              <div class="shot-item">
+                <span class="shot-num">2</span>
+                <button class="shot-check" onclick="toggleShot(6,2)"></button>
+                <span class="shot-text">Underwater volcanic activity footage or animation</span>
+                <button class="shot-delete" onclick="delShot(6,2)">✕</button>
+              </div>
+              <div class="shot-item">
+                <span class="shot-num">3</span>
+                <button class="shot-check" onclick="toggleShot(6,3)"></button>
+                <span class="shot-text">Military ship graphic — tension building</span>
+                <button class="shot-delete" onclick="delShot(6,3)">✕</button>
+              </div>
+              <div class="shot-item">
+                <span class="shot-num">4</span>
+                <button class="shot-check" onclick="toggleShot(6,4)"></button>
+                <span class="shot-text">Map: two nations facing each other across the Pacific</span>
+                <button class="shot-delete" onclick="delShot(6,4)">✕</button>
+              </div>
+              <div class="shot-item">
+                <span class="shot-num">5</span>
+                <button class="shot-check" onclick="toggleShot(6,5)"></button>
+                <span class="shot-text">Final text card: 'Almost a war. Just a volcano.'</span>
+                <button class="shot-delete" onclick="delShot(6,5)">✕</button>
+              </div>
+          </div>
+          <div class="add-shot-row">
+            <input id="shot-in-6" type="text" placeholder="Add shot description..." onkeydown="if(event.key===&#39;Enter&#39;)addShot(6)">
+            <button class="add-shot-btn" onclick="addShot(6)">+</button>
+          </div>
+        </div>
+        <div class="exp-panel" id="exp-analytics-6">
+          <div class="analytics-grid">
+            <div class="analytics-item">
+              <div class="analytics-label">Views</div>
+              <input class="analytics-input" type="number" value="5095" placeholder="0" oninput="updateAnalytic(6,&#39;views&#39;,this.value)">
+            </div>
+            <div class="analytics-item">
+              <div class="analytics-label">Likes</div>
+              <input class="analytics-input" type="number" value="46" placeholder="0" oninput="updateAnalytic(6,&#39;likes&#39;,this.value)">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div><div class="video-card cat-crime" id="vcard-7" draggable="true" ondragstart="dragStart(event,7)" ondragover="dragOver(event,7)" ondragleave="dragLeave(event)" ondrop="dragDrop(event,7)" ondragend="dragEnd()">
+      <div class="card-main">
+        <div class="card-top">
+          <span class="drag-handle">⠿</span>
+          <button class="check-btn" onclick="toggleDone(7)"></button>
+          <div class="card-content">
+            <div class="card-num">VIDEO 07</div>
+            <div class="video-title">The Prisoner Who Escaped and Lived Free for 30 Years</div>
+            <div class="card-meta">
+              <span class="tag tag-cat-crime">🔍 Crime</span>
+              <span class="tag tag-dur">0:30</span>
+              
+              
+            </div>
+            <div class="card-actions">
+              <button class="expand-btn" onclick="toggleExpand(7)">
+                📋 Script &amp; Shots (0/5) ▼
+              </button>
+              <button class="delete-btn" onclick="delVideo(7)">✕</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="expanded-section" id="exp-7">
+        <div class="exp-tabs">
+          <button class="exp-tab active" onclick="switchExpTab(7,&#39;script&#39;)">SCRIPT</button>
+          <button class="exp-tab" onclick="switchExpTab(7,&#39;shots&#39;)">SHOTS (0/5)</button>
+          <button class="exp-tab" onclick="switchExpTab(7,&#39;analytics&#39;)">ANALYTICS</button>
+        </div>
+        <div class="exp-panel active" id="exp-script-7">
+          <div class="script-block">
+            <div class="script-section-label">Hook</div>
+            <div class="script-text hook-text">He escaped prison in 1969, built a full life, raised kids… then turned himself in 30 years later.</div>
+          </div>
+          <div class="script-block">
+            <div class="script-section-label">Full Script</div>
+            <div class="script-text" style="white-space:pre-line;font-size:12px">Robert Stackowitz walked away from a work release program in Connecticut in 1969.
+
+He moved to Florida. Got a job. Got married. Had children. Became a grandfather.
+
+For 30 years, nobody came looking.
+
+In 2000, at 73 years old — he called police and turned himself in.
+
+When asked why, he said he was tired of looking over his shoulder.
+
+His family had no idea.
+
+The courts sentenced him to time served.
+
+He had already served 30 years — just not behind bars.</div>
+          </div>
+        </div>
+        <div class="exp-panel" id="exp-shots-7">
+          <div class="shot-items">
+            
+              <div class="shot-item">
+                <span class="shot-num">1</span>
+                <button class="shot-check" onclick="toggleShot(7,1)"></button>
+                <span class="shot-text">Prison fence graphic — one gate left open</span>
+                <button class="shot-delete" onclick="delShot(7,1)">✕</button>
+              </div>
+              <div class="shot-item">
+                <span class="shot-num">2</span>
+                <button class="shot-check" onclick="toggleShot(7,2)"></button>
+                <span class="shot-text">Timeline: 1969 → life montage text cards → 2000</span>
+                <button class="shot-delete" onclick="delShot(7,2)">✕</button>
+              </div>
+              <div class="shot-item">
+                <span class="shot-num">3</span>
+                <button class="shot-check" onclick="toggleShot(7,3)"></button>
+                <span class="shot-text">Newspaper graphic: 'Man Turns Himself In After 30 Years'</span>
+                <button class="shot-delete" onclick="delShot(7,3)">✕</button>
+              </div>
+              <div class="shot-item">
+                <span class="shot-num">4</span>
+                <button class="shot-check" onclick="toggleShot(7,4)"></button>
+                <span class="shot-text">Courtroom gavel graphic</span>
+                <button class="shot-delete" onclick="delShot(7,4)">✕</button>
+              </div>
+              <div class="shot-item">
+                <span class="shot-num">5</span>
+                <button class="shot-check" onclick="toggleShot(7,5)"></button>
+                <span class="shot-text">Final text: 'Time served. Just not behind bars.'</span>
+                <button class="shot-delete" onclick="delShot(7,5)">✕</button>
+              </div>
+          </div>
+          <div class="add-shot-row">
+            <input id="shot-in-7" type="text" placeholder="Add shot description..." onkeydown="if(event.key===&#39;Enter&#39;)addShot(7)">
+            <button class="add-shot-btn" onclick="addShot(7)">+</button>
+          </div>
+        </div>
+        <div class="exp-panel" id="exp-analytics-7">
+          <div class="analytics-grid">
+            <div class="analytics-item">
+              <div class="analytics-label">Views</div>
+              <input class="analytics-input" type="number" value="" placeholder="0" oninput="updateAnalytic(7,&#39;views&#39;,this.value)">
+            </div>
+            <div class="analytics-item">
+              <div class="analytics-label">Likes</div>
+              <input class="analytics-input" type="number" value="" placeholder="0" oninput="updateAnalytic(7,&#39;likes&#39;,this.value)">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div><div class="video-card cat-space" id="vcard-8" draggable="true" ondragstart="dragStart(event,8)" ondragover="dragOver(event,8)" ondragleave="dragLeave(event)" ondrop="dragDrop(event,8)" ondragend="dragEnd()">
+      <div class="card-main">
+        <div class="card-top">
+          <span class="drag-handle">⠿</span>
+          <button class="check-btn" onclick="toggleDone(8)"></button>
+          <div class="card-content">
+            <div class="card-num">VIDEO 08</div>
+            <div class="video-title">The Asteroid That Almost Ended Humanity in 2029</div>
+            <div class="card-meta">
+              <span class="tag tag-cat-space">🚀 Space</span>
+              <span class="tag tag-dur">0:35</span>
+              
+              
+            </div>
+            <div class="card-actions">
+              <button class="expand-btn" onclick="toggleExpand(8)">
+                📋 Script &amp; Shots (0/6) ▼
+              </button>
+              <button class="delete-btn" onclick="delVideo(8)">✕</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="expanded-section" id="exp-8">
+        <div class="exp-tabs">
+          <button class="exp-tab active" onclick="switchExpTab(8,&#39;script&#39;)">SCRIPT</button>
+          <button class="exp-tab" onclick="switchExpTab(8,&#39;shots&#39;)">SHOTS (0/6)</button>
+          <button class="exp-tab" onclick="switchExpTab(8,&#39;analytics&#39;)">ANALYTICS</button>
+        </div>
+        <div class="exp-panel active" id="exp-script-8">
+          <div class="script-block">
+            <div class="script-section-label">Hook</div>
+            <div class="script-text hook-text">In 2004, NASA calculated a 2.7% chance that an asteroid would hit Earth in 2029. That's the highest probability ever recorded.</div>
+          </div>
+          <div class="script-block">
+            <div class="script-section-label">Full Script</div>
+            <div class="script-text" style="white-space:pre-line;font-size:12px">The asteroid is called Apophis.
+
+It's 340 meters wide — large enough to destroy a city the size of Paris.
+
+When astronomers first calculated its trajectory, they gave it a 1 in 37 chance of impact.
+
+The internet panicked. Scientists went quiet.
+
+For 72 hours, this was the most terrifying number in astronomy.
+
+Then more data came in.
+
+The probability dropped. Then dropped again. Then went to zero.
+
+But here's what nobody talks about: in 2029, Apophis WILL pass closer to Earth than our own satellites. You'll be able to see it with the naked eye.
+
+It's not going to hit us.
+
+This time.</div>
+          </div>
+        </div>
+        <div class="exp-panel" id="exp-shots-8">
+          <div class="shot-items">
+            
+              <div class="shot-item">
+                <span class="shot-num">1</span>
+                <button class="shot-check" onclick="toggleShot(8,1)"></button>
+                <span class="shot-text">Space black background — asteroid slowly zooming in</span>
+                <button class="shot-delete" onclick="delShot(8,1)">✕</button>
+              </div>
+              <div class="shot-item">
+                <span class="shot-num">2</span>
+                <button class="shot-check" onclick="toggleShot(8,2)"></button>
+                <span class="shot-text">Text: '2.7% chance. Highest ever recorded.' — stark white</span>
+                <button class="shot-delete" onclick="delShot(8,2)">✕</button>
+              </div>
+              <div class="shot-item">
+                <span class="shot-num">3</span>
+                <button class="shot-check" onclick="toggleShot(8,3)"></button>
+                <span class="shot-text">Size comparison graphic: Apophis vs city of Paris</span>
+                <button class="shot-delete" onclick="delShot(8,3)">✕</button>
+              </div>
+              <div class="shot-item">
+                <span class="shot-num">4</span>
+                <button class="shot-check" onclick="toggleShot(8,4)"></button>
+                <span class="shot-text">Probability counter dropping from 2.7% → 0% animation</span>
+                <button class="shot-delete" onclick="delShot(8,4)">✕</button>
+              </div>
+              <div class="shot-item">
+                <span class="shot-num">5</span>
+                <button class="shot-check" onclick="toggleShot(8,5)"></button>
+                <span class="shot-text">Earth from space — asteroid passing close, visible</span>
+                <button class="shot-delete" onclick="delShot(8,5)">✕</button>
+              </div>
+              <div class="shot-item">
+                <span class="shot-num">6</span>
+                <button class="shot-check" onclick="toggleShot(8,6)"></button>
+                <span class="shot-text">Final text: '2029. Look up.' — ominous</span>
+                <button class="shot-delete" onclick="delShot(8,6)">✕</button>
+              </div>
+          </div>
+          <div class="add-shot-row">
+            <input id="shot-in-8" type="text" placeholder="Add shot description..." onkeydown="if(event.key===&#39;Enter&#39;)addShot(8)">
+            <button class="add-shot-btn" onclick="addShot(8)">+</button>
+          </div>
+        </div>
+        <div class="exp-panel" id="exp-analytics-8">
+          <div class="analytics-grid">
+            <div class="analytics-item">
+              <div class="analytics-label">Views</div>
+              <input class="analytics-input" type="number" value="" placeholder="0" oninput="updateAnalytic(8,&#39;views&#39;,this.value)">
+            </div>
+            <div class="analytics-item">
+              <div class="analytics-label">Likes</div>
+              <input class="analytics-input" type="number" value="" placeholder="0" oninput="updateAnalytic(8,&#39;likes&#39;,this.value)">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div><div class="video-card cat-science" id="vcard-9" draggable="true" ondragstart="dragStart(event,9)" ondragover="dragOver(event,9)" ondragleave="dragLeave(event)" ondrop="dragDrop(event,9)" ondragend="dragEnd()">
+      <div class="card-main">
+        <div class="card-top">
+          <span class="drag-handle">⠿</span>
+          <button class="check-btn" onclick="toggleDone(9)"></button>
+          <div class="card-content">
+            <div class="card-num">VIDEO 09</div>
+            <div class="video-title">The Patient Who Woke Up Speaking a Different Language</div>
+            <div class="card-meta">
+              <span class="tag tag-cat-science">🔬 Science</span>
+              <span class="tag tag-dur">0:25</span>
+              
+              
+            </div>
+            <div class="card-actions">
+              <button class="expand-btn" onclick="toggleExpand(9)">
+                📋 Script &amp; Shots (0/5) ▼
+              </button>
+              <button class="delete-btn" onclick="delVideo(9)">✕</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="expanded-section" id="exp-9">
+        <div class="exp-tabs">
+          <button class="exp-tab active" onclick="switchExpTab(9,&#39;script&#39;)">SCRIPT</button>
+          <button class="exp-tab" onclick="switchExpTab(9,&#39;shots&#39;)">SHOTS (0/5)</button>
+          <button class="exp-tab" onclick="switchExpTab(9,&#39;analytics&#39;)">ANALYTICS</button>
+        </div>
+        <div class="exp-panel active" id="exp-script-9">
+          <div class="script-block">
+            <div class="script-section-label">Hook</div>
+            <div class="script-text hook-text">A woman went under for routine surgery and woke up speaking with a foreign accent she'd never had in her life.</div>
+          </div>
+          <div class="script-block">
+            <div class="script-section-label">Full Script</div>
+            <div class="script-text" style="white-space:pre-line;font-size:12px">Foreign Accent Syndrome is real.
+
+It's not a party trick. It's a neurological condition that rewires how your brain produces speech.
+
+It's happened to people who've had strokes, head injuries, migraines.
+
+One woman from Indiana woke up with a British accent. She'd never left the country.
+
+Another person in Norway woke up sounding German — in 1941 — and was shunned by her entire village.
+
+Your accent isn't just how you sound. It's how you're recognized. How you belong.
+
+And sometimes, your own brain takes it away.</div>
+          </div>
+        </div>
+        <div class="exp-panel" id="exp-shots-9">
+          <div class="shot-items">
+            
+              <div class="shot-item">
+                <span class="shot-num">1</span>
+                <button class="shot-check" onclick="toggleShot(9,1)"></button>
+                <span class="shot-text">Hospital room — patient waking up, confused expression</span>
+                <button class="shot-delete" onclick="delShot(9,1)">✕</button>
+              </div>
+              <div class="shot-item">
+                <span class="shot-num">2</span>
+                <button class="shot-check" onclick="toggleShot(9,2)"></button>
+                <span class="shot-text">Text: 'Foreign Accent Syndrome' — medical journal style</span>
+                <button class="shot-delete" onclick="delShot(9,2)">✕</button>
+              </div>
+              <div class="shot-item">
+                <span class="shot-num">3</span>
+                <button class="shot-check" onclick="toggleShot(9,3)"></button>
+                <span class="shot-text">Map: Indiana → British accent visual</span>
+                <button class="shot-delete" onclick="delShot(9,3)">✕</button>
+              </div>
+              <div class="shot-item">
+                <span class="shot-num">4</span>
+                <button class="shot-check" onclick="toggleShot(9,4)"></button>
+                <span class="shot-text">Brain MRI scan graphic — highlighted speech areas</span>
+                <button class="shot-delete" onclick="delShot(9,4)">✕</button>
+              </div>
+              <div class="shot-item">
+                <span class="shot-num">5</span>
+                <button class="shot-check" onclick="toggleShot(9,5)"></button>
+                <span class="shot-text">Final frame: 'Your brain can change who you sound like overnight.'</span>
+                <button class="shot-delete" onclick="delShot(9,5)">✕</button>
+              </div>
+          </div>
+          <div class="add-shot-row">
+            <input id="shot-in-9" type="text" placeholder="Add shot description..." onkeydown="if(event.key===&#39;Enter&#39;)addShot(9)">
+            <button class="add-shot-btn" onclick="addShot(9)">+</button>
+          </div>
+        </div>
+        <div class="exp-panel" id="exp-analytics-9">
+          <div class="analytics-grid">
+            <div class="analytics-item">
+              <div class="analytics-label">Views</div>
+              <input class="analytics-input" type="number" value="" placeholder="0" oninput="updateAnalytic(9,&#39;views&#39;,this.value)">
+            </div>
+            <div class="analytics-item">
+              <div class="analytics-label">Likes</div>
+              <input class="analytics-input" type="number" value="" placeholder="0" oninput="updateAnalytic(9,&#39;likes&#39;,this.value)">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div><div class="video-card cat-history done" id="vcard-10" draggable="true" ondragstart="dragStart(event,10)" ondragover="dragOver(event,10)" ondragleave="dragLeave(event)" ondrop="dragDrop(event,10)" ondragend="dragEnd()">
+      <div class="card-main">
+        <div class="card-top">
+          <span class="drag-handle">⠿</span>
+          <button class="check-btn" onclick="toggleDone(10)">✓</button>
+          <div class="card-content">
+            <div class="card-num">VIDEO 10</div>
+            <div class="video-title">The War That Only Lasted 38 Minutes</div>
+            <div class="card-meta">
+              <span class="tag tag-cat-history">📜 History</span>
+              <span class="tag tag-dur">0:35</span>
+              <span class="tag tag-posted">✓ Posted</span>
+              <span class="tag tag-dur">👁 1.0K</span>
+            </div>
+            <div class="card-actions">
+              <button class="expand-btn" onclick="toggleExpand(10)">
+                📋 Script &amp; Shots (0/5) ▼
+              </button>
+              <button class="delete-btn" onclick="delVideo(10)">✕</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="expanded-section" id="exp-10">
+        <div class="exp-tabs">
+          <button class="exp-tab active" onclick="switchExpTab(10,&#39;script&#39;)">SCRIPT</button>
+          <button class="exp-tab" onclick="switchExpTab(10,&#39;shots&#39;)">SHOTS (0/5)</button>
+          <button class="exp-tab" onclick="switchExpTab(10,&#39;analytics&#39;)">ANALYTICS</button>
+        </div>
+        <div class="exp-panel active" id="exp-script-10">
+          <div class="script-block">
+            <div class="script-section-label">Hook</div>
+            <div class="script-text hook-text">The shortest war in recorded history lasted 38 minutes. Hundreds died. And it started over a flag.</div>
+          </div>
+          <div class="script-block">
+            <div class="script-section-label">Full Script</div>
+            <div class="script-text" style="white-space:pre-line;font-size:12px">August 27, 1896. Zanzibar.
+
+The Sultan of Zanzibar died, and his nephew Khalid bin Barghash seized the throne without British approval.
+
+Britain gave him an ultimatum: step down by 9am or face the consequences.
+
+He didn't step down.
+
+At 9:02am, British warships opened fire.
+
+By 9:40am, it was over.
+
+The palace was destroyed. Khalid fled. 500 Zanzibari soldiers were killed or wounded.
+
+The British suffered one injury.
+
+The Anglo-Zanzibar War lasted 38 minutes — the shortest war ever recorded.
+
+All because someone didn't ask permission.</div>
+          </div>
+        </div>
+        <div class="exp-panel" id="exp-shots-10">
+          <div class="shot-items">
+            
+              <div class="shot-item">
+                <span class="shot-num">1</span>
+                <button class="shot-check" onclick="toggleShot(10,1)"></button>
+                <span class="shot-text">Stopwatch graphic — 38:00 countdown begin</span>
+                <button class="shot-delete" onclick="delShot(10,1)">✕</button>
+              </div>
+              <div class="shot-item">
+                <span class="shot-num">2</span>
+                <button class="shot-check" onclick="toggleShot(10,2)"></button>
+                <span class="shot-text">Map: Zanzibar, British warships surrounding</span>
+                <button class="shot-delete" onclick="delShot(10,2)">✕</button>
+              </div>
+              <div class="shot-item">
+                <span class="shot-num">3</span>
+                <button class="shot-check" onclick="toggleShot(10,3)"></button>
+                <span class="shot-text">Text: '9:02 AM — Fire.' Dramatic cut</span>
+                <button class="shot-delete" onclick="delShot(10,3)">✕</button>
+              </div>
+              <div class="shot-item">
+                <span class="shot-num">4</span>
+                <button class="shot-check" onclick="toggleShot(10,4)"></button>
+                <span class="shot-text">'9:40 AM — Surrender.' — same format</span>
+                <button class="shot-delete" onclick="delShot(10,4)">✕</button>
+              </div>
+              <div class="shot-item">
+                <span class="shot-num">5</span>
+                <button class="shot-check" onclick="toggleShot(10,5)"></button>
+                <span class="shot-text">Final: '38 minutes. 500 casualties. Over a flag.'</span>
+                <button class="shot-delete" onclick="delShot(10,5)">✕</button>
+              </div>
+          </div>
+          <div class="add-shot-row">
+            <input id="shot-in-10" type="text" placeholder="Add shot description..." onkeydown="if(event.key===&#39;Enter&#39;)addShot(10)">
+            <button class="add-shot-btn" onclick="addShot(10)">+</button>
+          </div>
+        </div>
+        <div class="exp-panel" id="exp-analytics-10">
+          <div class="analytics-grid">
+            <div class="analytics-item">
+              <div class="analytics-label">Views</div>
+              <input class="analytics-input" type="number" value="1026" placeholder="0" oninput="updateAnalytic(10,&#39;views&#39;,this.value)">
+            </div>
+            <div class="analytics-item">
+              <div class="analytics-label">Likes</div>
+              <input class="analytics-input" type="number" value="11" placeholder="0" oninput="updateAnalytic(10,&#39;likes&#39;,this.value)">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div></div>
+</div>
+
+<!-- IDEAS BANK TAB -->
+<div class="tab-panel" id="panel-ideas">
+  <div class="section-label" style="margin-bottom:16px">Idea Bank — tap USE to move to videos</div>
+  <div id="ideas-bank">
+    <div class="idea-item">
+      <span class="idea-num">01</span>
+      <span class="idea-text">The city accidentally bombed by its own air force</span>
+      <button class="idea-use-btn" onclick="useIdea(&#39;The city accidentally bombed by its own air force&#39;)">USE →</button>
+    </div>
+    <div class="idea-item">
+      <span class="idea-num">02</span>
+      <span class="idea-text">The man declared legally dead while fully alive — for 20 years</span>
+      <button class="idea-use-btn" onclick="useIdea(&#39;The man declared legally dead while fully alive — for 20 years&#39;)">USE →</button>
+    </div>
+    <div class="idea-item">
+      <span class="idea-num">03</span>
+      <span class="idea-text">The cosmonaut who fell from space and survived</span>
+      <button class="idea-use-btn" onclick="useIdea(&#39;The cosmonaut who fell from space and survived&#39;)">USE →</button>
+    </div>
+    <div class="idea-item">
+      <span class="idea-num">04</span>
+      <span class="idea-text">The heist so perfect the bank didn't notice for 3 days</span>
+      <button class="idea-use-btn" onclick="useIdea(&#39;The heist so perfect the bank didn\&#39;t notice for 3 days&#39;)">USE →</button>
+    </div>
+    <div class="idea-item">
+      <span class="idea-num">05</span>
+      <span class="idea-text">The island that appeared and disappeared on maps for 80 years</span>
+      <button class="idea-use-btn" onclick="useIdea(&#39;The island that appeared and disappeared on maps for 80 years&#39;)">USE →</button>
+    </div>
+    <div class="idea-item">
+      <span class="idea-num">06</span>
+      <span class="idea-text">The doctor who discovered handwashing and was locked in an asylum for it</span>
+      <button class="idea-use-btn" onclick="useIdea(&#39;The doctor who discovered handwashing and was locked in an asylum for it&#39;)">USE →</button>
+    </div>
+    <div class="idea-item">
+      <span class="idea-num">07</span>
+      <span class="idea-text">The WW2 spy who fooled the Nazis with a dead body</span>
+      <button class="idea-use-btn" onclick="useIdea(&#39;The WW2 spy who fooled the Nazis with a dead body&#39;)">USE →</button>
+    </div>
+    <div class="idea-item">
+      <span class="idea-num">08</span>
+      <span class="idea-text">The man who accidentally invented the microwave</span>
+      <button class="idea-use-btn" onclick="useIdea(&#39;The man who accidentally invented the microwave&#39;)">USE →</button>
+    </div>
+    <div class="idea-item">
+      <span class="idea-num">09</span>
+      <span class="idea-text">The country that technically never ended a war — and still hasn't</span>
+      <button class="idea-use-btn" onclick="useIdea(&#39;The country that technically never ended a war — and still hasn\&#39;t&#39;)">USE →</button>
+    </div>
+    <div class="idea-item">
+      <span class="idea-num">10</span>
+      <span class="idea-text">The animal that can survive in outer space with no suit</span>
+      <button class="idea-use-btn" onclick="useIdea(&#39;The animal that can survive in outer space with no suit&#39;)">USE →</button>
+    </div>
+    <div class="idea-item">
+      <span class="idea-num">11</span>
+      <span class="idea-text">The lake in Africa that explodes every few years</span>
+      <button class="idea-use-btn" onclick="useIdea(&#39;The lake in Africa that explodes every few years&#39;)">USE →</button>
+    </div>
+    <div class="idea-item">
+      <span class="idea-num">12</span>
+      <span class="idea-text">The pilot who landed a plane with no wings and lived</span>
+      <button class="idea-use-btn" onclick="useIdea(&#39;The pilot who landed a plane with no wings and lived&#39;)">USE →</button>
+    </div>
+    <div class="idea-item">
+      <span class="idea-num">13</span>
+      <span class="idea-text">The mathematician who solved a problem in his sleep</span>
+      <button class="idea-use-btn" onclick="useIdea(&#39;The mathematician who solved a problem in his sleep&#39;)">USE →</button>
+    </div>
+    <div class="idea-item">
+      <span class="idea-num">14</span>
+      <span class="idea-text">The town where the sun doesn't rise for 2 months straight</span>
+      <button class="idea-use-btn" onclick="useIdea(&#39;The town where the sun doesn\&#39;t rise for 2 months straight&#39;)">USE →</button>
+    </div>
+    <div class="idea-item">
+      <span class="idea-num">15</span>
+      <span class="idea-text">The ship that disappeared and reappeared 40 years later — still sailing</span>
+      <button class="idea-use-btn" onclick="useIdea(&#39;The ship that disappeared and reappeared 40 years later — still sailing&#39;)">USE →</button>
+    </div></div>
+</div>
+
+<!-- SCHEDULE TAB -->
+<div class="tab-panel" id="panel-schedule">
+  <div class="section-label" style="margin-bottom:16px">Posting Schedule &amp; Strategy</div>
+  <div id="schedule-list">
+    <div class="sched-item">
+      <span class="sched-day">MON</span>
+      <span class="sched-tip">Post your strongest video — Monday algorithm boost is real</span>
+      <span class="sched-time">6–8 PM</span>
+    </div>
+    <div class="sched-item">
+      <span class="sched-day">WED</span>
+      <span class="sched-tip">Mid-week drop — people are scrolling to escape work</span>
+      <span class="sched-time">7–9 PM</span>
+    </div>
+    <div class="sched-item">
+      <span class="sched-day">FRI</span>
+      <span class="sched-tip">End-of-week reward content — history and crime perform best</span>
+      <span class="sched-time">6–8 PM</span>
+    </div>
+    <div class="sched-item">
+      <span class="sched-day">SUN</span>
+      <span class="sched-tip">Optional bonus post — science and space do well on Sundays</span>
+      <span class="sched-time">4–6 PM</span>
+    </div>
+    <div class="sched-item">
+      <span class="sched-day">DAILY</span>
+      <span class="sched-tip">Reply to every comment in the first hour — algorithm booster</span>
+      <span class="sched-time">After post</span>
+    </div>
+    <div class="sched-item">
+      <span class="sched-day">DAILY</span>
+      <span class="sched-tip">Check retention graph — if drop-off before 50% recut the hook</span>
+      <span class="sched-time">24hr mark</span>
+    </div>
+    <div class="sched-item">
+      <span class="sched-day">WEEKLY</span>
+      <span class="sched-tip">Study your top performer. What made the hook work? Replicate it.</span>
+      <span class="sched-time">Sunday</span>
+    </div></div>
+</div>
+
+</div>
+
+<script>
+// ===================== DEFAULT DATA =====================
+const DEFAULT_VIDEOS = [
+  {
+    id:1, title:"The Soldier Who Kept Fighting Until 1974", category:"history", duration:"0:30", done:false,
+    hook:"This soldier kept fighting World War 2 for 29 years after it ended… because nobody told him.",
+    script:`HOOK: This soldier kept fighting World War 2 for 29 years after it ended… because nobody told him.
+
+In 1945, Japanese soldier Hiroo Onoda was stationed in the Philippine jungle with one order: never surrender.
+
+So he didn't.
+
+While the world moved on, built cities, landed on the moon… Onoda was still fighting.
+
+He ambushed supply convoys. He evaded search parties. He survived on bananas and whatever he could hunt.
+
+When people came into the jungle with newspapers to prove the war was over, he thought it was propaganda.
+
+It took until 1974 — nearly 30 years later — for his original commanding officer to fly to the Philippines, enter the jungle, and personally relieve him of duty.
+
+Onoda walked out of that jungle still in uniform, rifle in hand, loyal to a war that had ended before most people alive today were born.
+
+He didn't surrender. He was relieved.`,
+    shots:[
+      {id:1,text:"Black screen open — white text: 'Japan, 1945.' Dramatic ambient sound",done:false},
+      {id:2,text:"Stock footage or animated map of Philippine jungle",done:false},
+      {id:3,text:"Text on screen: 'His orders: Never surrender.'",done:false},
+      {id:4,text:"Timeline graphic — 1945 → 1950 → 1960 → 1974 with world events shown",done:false},
+      {id:5,text:"Newspaper headline graphic: 'War Ends'",done:false},
+      {id:6,text:"Final frame: Onoda emerging from jungle — photo or recreation text card",done:false},
+    ],
+    views:"", likes:""
+  },
+  {
+    id:2, title:"The Disease That Makes You Stop Sleeping Forever", category:"science", duration:"0:30", done:false,
+    hook:"There is a disease that makes it impossible to sleep… and it's always fatal.",
+    script:`HOOK: There is a disease that makes it impossible to sleep… and it's always fatal.
+
+It's called Fatal Familial Insomnia.
+
+It starts with mild sleep problems. Then vivid hallucinations. Then a complete inability to sleep at all.
+
+Your body doesn't know how to stop being awake.
+
+Within months, your organs begin to fail. Your mind deteriorates. You experience dreams while fully conscious.
+
+And then you die — not from a virus, not from a wound — but from the simple inability to sleep.
+
+What makes it even more terrifying: it's genetic. It runs in families. Some people already know they carry it.
+
+There is no cure. No treatment. No way out.
+
+And the last thought they ever have… is that they just want to close their eyes.`,
+    shots:[
+      {id:1,text:"Dark bedroom, clock reading 3am — eerie ambient tone",done:false},
+      {id:2,text:"Text card: 'Fatal Familial Insomnia' — slow zoom",done:false},
+      {id:3,text:"Medical diagram animation — brain waves going flat",done:false},
+      {id:4,text:"Timeline: Week 1 → Month 3 → Month 6 → Death",done:false},
+      {id:5,text:"Final frame: close up of closed eye — then slow open",done:false},
+    ],
+    views:"", likes:""
+  },
+  {
+    id:3, title:"He Hacked NASA at 15 Then the FBI Showed Up", category:"crime", duration:"0:35", done:true,
+    hook:"A 15-year-old hacked NASA, shut down their systems for 21 days… and did it from his bedroom.",
+    script:`HOOK: A 15-year-old hacked NASA, shut down their systems for 21 days… and did it from his bedroom.
+
+Jonathan James wasn't a prodigy. He was just bored.
+
+In 1999, he broke into NASA's network and downloaded $1.7 million worth of source code — software that controlled the temperature and humidity of the International Space Station.
+
+NASA had to shut down their systems for 21 days to investigate.
+
+He also broke into the US Department of Defense. He intercepted thousands of military emails.
+
+When the FBI finally knocked on his door, they found a teenager in a hoodie.
+
+He was sentenced to 6 months house arrest — the first juvenile to be imprisoned for cybercrime in the US.
+
+He died in 2008 at 24 years old.
+
+His note said he had no faith in the justice system.
+
+The kid who hacked NASA… never got justice himself.`,
+    shots:[
+      {id:1,text:"Retro computer screen, green terminal text — dark room",done:false},
+      {id:2,text:"Text: 'Age 15. Bedroom. 1999.' — typewriter sound",done:false},
+      {id:3,text:"NASA logo graphic — then glitch effect",done:false},
+      {id:4,text:"News headline graphic: 'NASA Systems Shut Down 21 Days'",done:false},
+      {id:5,text:"FBI badge graphic — knock sound effect",done:false},
+      {id:6,text:"Final frame: His name and dates. Dark, minimal.",done:false},
+    ],
+    views:"3507", likes:"49"
+  },
+  {
+    id:4, title:"The Man Who Survived Two Atomic Bombs", category:"history", duration:"0:34", done:true,
+    hook:"One man survived both atomic bombs dropped on Japan. This is not a myth.",
+    script:`HOOK: One man survived both atomic bombs dropped on Japan. This is not a myth.
+
+His name was Tsutomu Yamaguchi.
+
+On August 6, 1945, he was on a business trip in Hiroshima when the first bomb dropped. He survived — burned, eardrums blown out, but alive.
+
+He treated his wounds and got on a train back home.
+
+Home was Nagasaki.
+
+On August 9th, he was telling his boss about the bomb in Hiroshima when the second one dropped — right outside the window.
+
+He survived again.
+
+He was officially recognized as the only person documented to have survived both bombings.
+
+He lived to be 93 years old.
+
+When asked what it felt like, he said: "I thought it was the end of the world."
+
+Twice.`,
+    shots:[
+      {id:1,text:"Black and white aerial footage graphic — Hiroshima",done:false},
+      {id:2,text:"Map: Hiroshima → train track → Nagasaki",done:false},
+      {id:3,text:"Text: 'August 6. Then August 9.' — stark, minimal",done:false},
+      {id:4,text:"Photo of Yamaguchi (or illustrated card)",done:false},
+      {id:5,text:"Final quote card: 'I thought it was the end of the world. Twice.'",done:false},
+    ],
+    views:"1606", likes:"23"
+  },
+  {
+    id:5, title:"The Surgery Performed on Himself in Antarctica", category:"science", duration:"0:30", done:false,
+    hook:"A doctor was alone in Antarctica with appendicitis. So he operated on himself.",
+    script:`HOOK: A doctor was alone in Antarctica with appendicitis. So he operated on himself.
+
+It was 1961. Soviet doctor Leonid Rogozov was stationed at a remote Antarctic base.
+
+There was no way out. No way to evacuate. No other doctor.
+
+His appendix was failing. He had days to live if he did nothing.
+
+So he did something no one had ever done.
+
+He set up a mirror, picked up a scalpel, and cut himself open.
+
+With no anesthesia except local numbing, unable to see directly, working by feel — he removed his own appendix in two hours.
+
+He stitched himself closed, cleaned up, and was back on his feet five days later.
+
+He went on to become one of the most celebrated doctors in Russian history.
+
+The operation took two hours. The scar lasted a lifetime.`,
+    shots:[
+      {id:1,text:"Aerial shot of Antarctica — isolation, white nothing",done:false},
+      {id:2,text:"Medical diagram: appendix location highlighted red",done:false},
+      {id:3,text:"Text: '1961. No evacuation. No other doctor.' — slow reveal",done:false},
+      {id:4,text:"Surgical tools graphic — scalpel closeup",done:false},
+      {id:5,text:"Photo of Rogozov (or illustrated card with dates)",done:false},
+      {id:6,text:"Final frame: '2 hours. Self-operated. Survived.'",done:false},
+    ],
+    views:"", likes:""
+  },
+  {
+    id:6, title:"The Volcano Invisible to Radar That Nearly Started a War", category:"science", duration:"0:30", done:true,
+    hook:"A volcano collapsed so perfectly it became invisible to radar… and almost started a war.",
+    script:`HOOK: A volcano collapsed so perfectly it became invisible to radar… and almost started a war.
+
+The Tavita Volcano in the South Pacific had a caldera — a collapsed crater — that sat below the ocean's surface.
+
+Military radar flying over the area picked up nothing. No mass. No signature.
+
+But submarines passing underneath detected massive geological instability.
+
+Two nations in the region began pointing fingers at each other — claiming the other was testing underwater weapons.
+
+Tension escalated. Navies mobilized.
+
+It took a joint scientific team six weeks to figure out that what they were detecting wasn't a weapon — it was a volcano exhaling.
+
+The war never happened.
+
+Because one volcano decided to disappear.`,
+    shots:[
+      {id:1,text:"Radar screen graphic — sweeping line finds nothing",done:false},
+      {id:2,text:"Underwater volcanic activity footage or animation",done:false},
+      {id:3,text:"Military ship graphic — tension building",done:false},
+      {id:4,text:"Map: two nations facing each other across the Pacific",done:false},
+      {id:5,text:"Final text card: 'Almost a war. Just a volcano.'",done:false},
+    ],
+    views:"5095", likes:"46"
+  },
+  {
+    id:7, title:"The Prisoner Who Escaped and Lived Free for 30 Years", category:"crime", duration:"0:30", done:false,
+    hook:"He escaped prison in 1969, built a full life, raised kids… then turned himself in 30 years later.",
+    script:`HOOK: He escaped prison in 1969, built a full life, raised kids… then turned himself in 30 years later.
+
+Robert Stackowitz walked away from a work release program in Connecticut in 1969.
+
+He moved to Florida. Got a job. Got married. Had children. Became a grandfather.
+
+For 30 years, nobody came looking.
+
+In 2000, at 73 years old — he called police and turned himself in.
+
+When asked why, he said he was tired of looking over his shoulder.
+
+His family had no idea.
+
+The courts sentenced him to time served.
+
+He had already served 30 years — just not behind bars.`,
+    shots:[
+      {id:1,text:"Prison fence graphic — one gate left open",done:false},
+      {id:2,text:"Timeline: 1969 → life montage text cards → 2000",done:false},
+      {id:3,text:"Newspaper graphic: 'Man Turns Himself In After 30 Years'",done:false},
+      {id:4,text:"Courtroom gavel graphic",done:false},
+      {id:5,text:"Final text: 'Time served. Just not behind bars.'",done:false},
+    ],
+    views:"", likes:""
+  },
+  {
+    id:8, title:"The Asteroid That Almost Ended Humanity in 2029", category:"space", duration:"0:35", done:false,
+    hook:"In 2004, NASA calculated a 2.7% chance that an asteroid would hit Earth in 2029. That's the highest probability ever recorded.",
+    script:`HOOK: In 2004, NASA calculated a 2.7% chance that an asteroid would hit Earth in 2029. That's the highest probability ever recorded.
+
+The asteroid is called Apophis.
+
+It's 340 meters wide — large enough to destroy a city the size of Paris.
+
+When astronomers first calculated its trajectory, they gave it a 1 in 37 chance of impact.
+
+The internet panicked. Scientists went quiet.
+
+For 72 hours, this was the most terrifying number in astronomy.
+
+Then more data came in.
+
+The probability dropped. Then dropped again. Then went to zero.
+
+But here's what nobody talks about: in 2029, Apophis WILL pass closer to Earth than our own satellites. You'll be able to see it with the naked eye.
+
+It's not going to hit us.
+
+This time.`,
+    shots:[
+      {id:1,text:"Space black background — asteroid slowly zooming in",done:false},
+      {id:2,text:"Text: '2.7% chance. Highest ever recorded.' — stark white",done:false},
+      {id:3,text:"Size comparison graphic: Apophis vs city of Paris",done:false},
+      {id:4,text:"Probability counter dropping from 2.7% → 0% animation",done:false},
+      {id:5,text:"Earth from space — asteroid passing close, visible",done:false},
+      {id:6,text:"Final text: '2029. Look up.' — ominous",done:false},
+    ],
+    views:"", likes:""
+  },
+  {
+    id:9, title:"The Patient Who Woke Up Speaking a Different Language", category:"science", duration:"0:25", done:false,
+    hook:"A woman went under for routine surgery and woke up speaking with a foreign accent she'd never had in her life.",
+    script:`HOOK: A woman went under for routine surgery and woke up speaking with a foreign accent she'd never had in her life.
+
+Foreign Accent Syndrome is real.
+
+It's not a party trick. It's a neurological condition that rewires how your brain produces speech.
+
+It's happened to people who've had strokes, head injuries, migraines.
+
+One woman from Indiana woke up with a British accent. She'd never left the country.
+
+Another person in Norway woke up sounding German — in 1941 — and was shunned by her entire village.
+
+Your accent isn't just how you sound. It's how you're recognized. How you belong.
+
+And sometimes, your own brain takes it away.`,
+    shots:[
+      {id:1,text:"Hospital room — patient waking up, confused expression",done:false},
+      {id:2,text:"Text: 'Foreign Accent Syndrome' — medical journal style",done:false},
+      {id:3,text:"Map: Indiana → British accent visual",done:false},
+      {id:4,text:"Brain MRI scan graphic — highlighted speech areas",done:false},
+      {id:5,text:"Final frame: 'Your brain can change who you sound like overnight.'",done:false},
+    ],
+    views:"", likes:""
+  },
+  {
+    id:10, title:"The War That Only Lasted 38 Minutes", category:"history", duration:"0:35", done:true,
+    hook:"The shortest war in recorded history lasted 38 minutes. Hundreds died. And it started over a flag.",
+    script:`HOOK: The shortest war in recorded history lasted 38 minutes. Hundreds died. And it started over a flag.
+
+August 27, 1896. Zanzibar.
+
+The Sultan of Zanzibar died, and his nephew Khalid bin Barghash seized the throne without British approval.
+
+Britain gave him an ultimatum: step down by 9am or face the consequences.
+
+He didn't step down.
+
+At 9:02am, British warships opened fire.
+
+By 9:40am, it was over.
+
+The palace was destroyed. Khalid fled. 500 Zanzibari soldiers were killed or wounded.
+
+The British suffered one injury.
+
+The Anglo-Zanzibar War lasted 38 minutes — the shortest war ever recorded.
+
+All because someone didn't ask permission.`,
+    shots:[
+      {id:1,text:"Stopwatch graphic — 38:00 countdown begin",done:false},
+      {id:2,text:"Map: Zanzibar, British warships surrounding",done:false},
+      {id:3,text:"Text: '9:02 AM — Fire.' Dramatic cut",done:false},
+      {id:4,text:"'9:40 AM — Surrender.' — same format",done:false},
+      {id:5,text:"Final: '38 minutes. 500 casualties. Over a flag.'",done:false},
+    ],
+    views:"1026", likes:"11"
+  },
+];
+
+const IDEA_BANK = [
+  "The city accidentally bombed by its own air force",
+  "The man declared legally dead while fully alive — for 20 years",
+  "The cosmonaut who fell from space and survived",
+  "The heist so perfect the bank didn't notice for 3 days",
+  "The island that appeared and disappeared on maps for 80 years",
+  "The doctor who discovered handwashing and was locked in an asylum for it",
+  "The WW2 spy who fooled the Nazis with a dead body",
+  "The man who accidentally invented the microwave",
+  "The country that technically never ended a war — and still hasn't",
+  "The animal that can survive in outer space with no suit",
+  "The lake in Africa that explodes every few years",
+  "The pilot who landed a plane with no wings and lived",
+  "The mathematician who solved a problem in his sleep",
+  "The town where the sun doesn't rise for 2 months straight",
+  "The ship that disappeared and reappeared 40 years later — still sailing",
+];
+
+const SCHEDULE = [
+  { day:"MON", tip:"Post your strongest video — Monday algorithm boost is real", time:"6–8 PM" },
+  { day:"WED", tip:"Mid-week drop — people are scrolling to escape work", time:"7–9 PM" },
+  { day:"FRI", tip:"End-of-week reward content — history and crime perform best", time:"6–8 PM" },
+  { day:"SUN", tip:"Optional bonus post — science and space do well on Sundays", time:"4–6 PM" },
+  { day:"DAILY", tip:"Reply to every comment in the first hour — algorithm booster", time:"After post" },
+  { day:"DAILY", tip:"Check retention graph — if drop-off before 50% recut the hook", time:"24hr mark" },
+  { day:"WEEKLY", tip:"Study your top performer. What made the hook work? Replicate it.", time:"Sunday" },
+];
+
+let videos = JSON.parse(localStorage.getItem('mt-videos') || 'null') || DEFAULT_VIDEOS;
+let nextId = Math.max(...videos.map(v=>v.id),0)+1;
+let currentFilter = 'all';
+let openExpanded = new Set();
+let expTabs = {};
+let dragSrc = null;
+
+function save() { localStorage.setItem('mt-videos', JSON.stringify(videos)); }
+
+function getTotalViews() {
+  return videos.reduce((sum,v) => sum + (parseInt(v.views)||0), 0);
+}
+
+function updateStats() {
+  document.getElementById('st-total').textContent = videos.length;
+  document.getElementById('st-todo').textContent = videos.filter(v=>!v.done).length;
+  document.getElementById('st-posted').textContent = videos.filter(v=>v.done).length;
+  const tv = getTotalViews();
+  document.getElementById('st-views').textContent = tv >= 1000 ? (tv/1000).toFixed(1)+'K' : tv;
+}
+
+function catLabel(c) {
+  return {history:'📜 History',science:'🔬 Science',crime:'🔍 Crime',space:'🚀 Space',survival:'🧠 Survival',other:'Other'}[c]||c;
+}
+
+function getFiltered() {
+  if(currentFilter==='history') return videos.filter(v=>v.category==='history');
+  if(currentFilter==='science') return videos.filter(v=>v.category==='science');
+  if(currentFilter==='crime') return videos.filter(v=>v.category==='crime');
+  if(currentFilter==='space') return videos.filter(v=>v.category==='space');
+  if(currentFilter==='todo') return videos.filter(v=>!v.done);
+  if(currentFilter==='posted') return videos.filter(v=>v.done);
+  return [...videos];
+}
+
+function render() {
+  updateStats();
+  const filtered = getFiltered();
+  const list = document.getElementById('videos-list');
+
+  if(!filtered.length) {
+    list.innerHTML = `<div class="empty"><span>🌌</span>No videos yet</div>`;
+    return;
+  }
+
+  list.innerHTML = filtered.map((v,idx) => {
+    const isOpen = openExpanded.has(v.id);
+    const activeTab = expTabs[v.id] || 'script';
+    const shots = v.shots || [];
+    const shotsDone = shots.filter(s=>s.done).length;
+
+    return `<div class="video-card cat-${v.category}${v.done?' done':''}" id="vcard-${v.id}"
+      draggable="true"
+      ondragstart="dragStart(event,${v.id})"
+      ondragover="dragOver(event,${v.id})"
+      ondragleave="dragLeave(event)"
+      ondrop="dragDrop(event,${v.id})"
+      ondragend="dragEnd()">
+      <div class="card-main">
+        <div class="card-top">
+          <span class="drag-handle">⠿</span>
+          <button class="check-btn" onclick="toggleDone(${v.id})">${v.done?'✓':''}</button>
+          <div class="card-content">
+            <div class="card-num">VIDEO ${String(idx+1).padStart(2,'0')}</div>
+            <div class="video-title">${v.title}</div>
+            <div class="card-meta">
+              <span class="tag tag-cat-${v.category}">${catLabel(v.category)}</span>
+              <span class="tag tag-dur">${v.duration}</span>
+              ${v.done?'<span class="tag tag-posted">✓ Posted</span>':''}
+              ${v.views?`<span class="tag tag-dur">👁 ${parseInt(v.views)>=1000?(parseInt(v.views)/1000).toFixed(1)+'K':v.views}</span>`:''}
+            </div>
+            <div class="card-actions">
+              <button class="expand-btn" onclick="toggleExpand(${v.id})">
+                📋 Script & Shots (${shotsDone}/${shots.length}) ${isOpen?'▲':'▼'}
+              </button>
+              <button class="delete-btn" onclick="delVideo(${v.id})">✕</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="expanded-section${isOpen?' open':''}" id="exp-${v.id}">
+        <div class="exp-tabs">
+          <button class="exp-tab${activeTab==='script'?' active':''}" onclick="switchExpTab(${v.id},'script')">SCRIPT</button>
+          <button class="exp-tab${activeTab==='shots'?' active':''}" onclick="switchExpTab(${v.id},'shots')">SHOTS (${shotsDone}/${shots.length})</button>
+          <button class="exp-tab${activeTab==='analytics'?' active':''}" onclick="switchExpTab(${v.id},'analytics')">ANALYTICS</button>
+        </div>
+        <div class="exp-panel${activeTab==='script'?' active':''}" id="exp-script-${v.id}">
+          <div class="script-block">
+            <div class="script-section-label">Hook</div>
+            <div class="script-text hook-text">${v.hook||'No hook added yet'}</div>
+          </div>
+          <div class="script-block">
+            <div class="script-section-label">Full Script</div>
+            <div class="script-text" style="white-space:pre-line;font-size:12px">${(v.script||'No script yet').replace(/^HOOK:.*\n\n/,'')}</div>
+          </div>
+        </div>
+        <div class="exp-panel${activeTab==='shots'?' active':''}" id="exp-shots-${v.id}">
+          <div class="shot-items">
+            ${shots.length ? shots.map((s,i)=>`
+              <div class="shot-item${s.done?' shot-done':''}">
+                <span class="shot-num">${i+1}</span>
+                <button class="shot-check" onclick="toggleShot(${v.id},${s.id})">${s.done?'✓':''}</button>
+                <span class="shot-text">${s.text}</span>
+                <button class="shot-delete" onclick="delShot(${v.id},${s.id})">✕</button>
+              </div>`).join('') : '<div style="font-size:12px;color:var(--muted);padding:4px 0">No shots yet</div>'}
+          </div>
+          <div class="add-shot-row">
+            <input id="shot-in-${v.id}" type="text" placeholder="Add shot description..." onkeydown="if(event.key==='Enter')addShot(${v.id})" />
+            <button class="add-shot-btn" onclick="addShot(${v.id})">+</button>
+          </div>
+        </div>
+        <div class="exp-panel${activeTab==='analytics'?' active':''}" id="exp-analytics-${v.id}">
+          <div class="analytics-grid">
+            <div class="analytics-item">
+              <div class="analytics-label">Views</div>
+              <input class="analytics-input" type="number" value="${v.views||''}" placeholder="0" oninput="updateAnalytic(${v.id},'views',this.value)" />
+            </div>
+            <div class="analytics-item">
+              <div class="analytics-label">Likes</div>
+              <input class="analytics-input" type="number" value="${v.likes||''}" placeholder="0" oninput="updateAnalytic(${v.id},'likes',this.value)" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function renderIdeas() {
+  document.getElementById('ideas-bank').innerHTML = IDEA_BANK.map((idea,i) => `
+    <div class="idea-item">
+      <span class="idea-num">${String(i+1).padStart(2,'0')}</span>
+      <span class="idea-text">${idea}</span>
+      <button class="idea-use-btn" onclick="useIdea('${idea.replace(/'/g,"\\'")}')">USE →</button>
+    </div>`).join('');
+}
+
+function renderSchedule() {
+  document.getElementById('schedule-list').innerHTML = SCHEDULE.map(s => `
+    <div class="sched-item">
+      <span class="sched-day">${s.day}</span>
+      <span class="sched-tip">${s.tip}</span>
+      <span class="sched-time">${s.time}</span>
+    </div>`).join('');
+}
+
+function toggleDone(id) { const v=videos.find(x=>x.id===id); if(v){v.done=!v.done;save();render();} }
+
+function delVideo(id) { videos=videos.filter(x=>x.id!==id); save(); render(); }
+
+function addVideo() {
+  const title=document.getElementById('v-title').value.trim(); if(!title)return;
+  videos.push({
+    id:nextId++, title,
+    hook:document.getElementById('v-hook').value.trim(),
+    script:'', shots:[],
+    category:document.getElementById('v-cat').value,
+    duration:document.getElementById('v-dur').value,
+    done:false, views:'', likes:''
+  });
+  document.getElementById('v-title').value='';
+  document.getElementById('v-hook').value='';
+  save(); render();
+}
+
+function useIdea(idea) {
+  document.getElementById('v-title').value=idea;
+  switchTab('videos', document.querySelector('.tab-btn'));
+  document.querySelectorAll('.tab-btn').forEach((b,i)=>{if(i===0)b.classList.add('active');else b.classList.remove('active');});
+  document.querySelectorAll('.tab-panel').forEach((p,i)=>{if(i===0)p.classList.add('active');else p.classList.remove('active');});
+  document.getElementById('v-title').focus();
+}
+
+function toggleExpand(id) {
+  openExpanded.has(id)?openExpanded.delete(id):openExpanded.add(id);
+  render();
+}
+
+function switchExpTab(id, tab) {
+  expTabs[id]=tab; render();
+}
+
+function addShot(id) {
+  const inp=document.getElementById(`shot-in-${id}`);
+  const text=inp.value.trim(); if(!text)return;
+  const v=videos.find(x=>x.id===id); if(!v)return;
+  if(!v.shots)v.shots=[];
+  const sid=Math.max(0,...v.shots.map(s=>s.id))+1;
+  v.shots.push({id:sid,text,done:false});
+  save(); render();
+  setTimeout(()=>{const el=document.getElementById(`shot-in-${id}`);if(el)el.focus();},10);
+}
+
+function toggleShot(vid,sid) {
+  const v=videos.find(x=>x.id===vid); if(!v)return;
+  const s=v.shots.find(x=>x.id===sid); if(s){s.done=!s.done;save();render();}
+}
+
+function delShot(vid,sid) {
+  const v=videos.find(x=>x.id===vid); if(!v)return;
+  v.shots=v.shots.filter(s=>s.id!==sid); save();render();
+}
+
+function updateAnalytic(id, field, val) {
+  const v=videos.find(x=>x.id===id); if(v){v[field]=val;save();updateStats();}
+}
+
+function setFilter(f,btn) {
+  currentFilter=f;
+  document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  render();
+}
+
+function switchTab(tab,btn) {
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById(`panel-${tab}`).classList.add('active');
+}
+
+// DRAG
+function dragStart(e,id){dragSrc=id;e.dataTransfer.effectAllowed='move';setTimeout(()=>{const c=document.getElementById(`vcard-${id}`);if(c)c.classList.add('dragging');},0);}
+function dragOver(e,id){e.preventDefault();if(id===dragSrc)return;document.querySelectorAll('.video-card').forEach(c=>c.classList.remove('drag-over'));const c=document.getElementById(`vcard-${id}`);if(c)c.classList.add('drag-over');}
+function dragLeave(e){e.currentTarget.classList.remove('drag-over');}
+function dragDrop(e,targetId){e.preventDefault();if(dragSrc===null||dragSrc===targetId)return;const si=videos.findIndex(v=>v.id===dragSrc);const ti=videos.findIndex(v=>v.id===targetId);if(si===-1||ti===-1)return;const[moved]=videos.splice(si,1);videos.splice(ti,0,moved);save();render();}
+function dragEnd(){document.querySelectorAll('.video-card').forEach(c=>{c.classList.remove('dragging');c.classList.remove('drag-over');});dragSrc=null;}
+
+document.getElementById('v-title').addEventListener('keydown',e=>{if(e.key==='Enter')addVideo();});
+
+render();
+renderIdeas();
+renderSchedule();
+</script>
+
+
+</body></html>
