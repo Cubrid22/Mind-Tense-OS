@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- saved from url=(0045)file:///Users/yasmani/Downloads/index_60.html -->
+<!-- saved from url=(0045)file:///Users/yasmani/Downloads/index_61.html -->
 <html lang="en" data-__embeded-gyazo-content-j-s="5.16.0" data-__gyazo-expander-enabled="true"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -518,20 +518,22 @@ textarea { resize: none; height: 70px; line-height: 1.5; }
             </div>
             <div class="card-actions">
               <button class="expand-btn" onclick="toggleExpand(1)">
-                📋 Script &amp; Shots (0/6) ▼
+                📋 Script &amp; Shots (0/6) ▲
               </button>
               <button class="delete-btn" onclick="delVideo(1)">✕</button>
             </div>
           </div>
         </div>
       </div>
-      <div class="expanded-section" id="exp-1">
-        <div class="exp-tabs">
-          <button class="exp-tab active" onclick="switchExpTab(1,&#39;script&#39;)">SCRIPT</button>
+      <div class="expanded-section open" id="exp-1">
+        <div class="exp-tabs" style="flex-wrap:wrap;gap:2px;">
+          <button class="exp-tab" onclick="switchExpTab(1,&#39;script&#39;)">SCRIPT</button>
           <button class="exp-tab" onclick="switchExpTab(1,&#39;shots&#39;)">SHOTS (0/6)</button>
-          <button class="exp-tab" onclick="switchExpTab(1,&#39;analytics&#39;)">ANALYTICS</button>
+          <button class="exp-tab" onclick="switchExpTab(1,&#39;broll&#39;)">B-ROLL</button>
+          <button class="exp-tab" onclick="switchExpTab(1,&#39;sfx&#39;)">SFX</button>
+          <button class="exp-tab active" onclick="switchExpTab(1,&#39;analytics&#39;)">ANALYTICS</button>
         </div>
-        <div class="exp-panel active" id="exp-script-1">
+        <div class="exp-panel" id="exp-script-1">
           <div class="script-block">
             <div class="script-section-label">Hook</div>
             <div class="script-text hook-text">This soldier kept fighting World War 2 for 29 years after it ended… because nobody told him.</div>
@@ -600,7 +602,25 @@ He didn't surrender. He was relieved.</div>
             <button class="add-shot-btn" onclick="addShot(1)">+</button>
           </div>
         </div>
-        <div class="exp-panel" id="exp-analytics-1">
+        <div class="exp-panel" id="exp-broll-1">
+          
+          <div style="font-size:12px;color:var(--muted);padding:4px 0 8px">Paste your b-roll list below — one item per line</div>
+          <textarea id="broll-paste-1" style="width:100%;height:100px;font-size:12px;resize:none" placeholder="Aerial shot of city...
+Close up of hands typing...
+Text card: &#39;Monday morning&#39;..."></textarea>
+          <button onclick="importBroll(1)" style="margin-top:6px;background:linear-gradient(135deg,var(--accent),#5b21b6);color:white;border:none;padding:8px;border-radius:6px;font-size:13px;cursor:pointer;width:100%;font-family:&#39;Bebas Neue&#39;,sans-serif;letter-spacing:2px">IMPORT AS CHECKLIST</button>
+          
+        </div>
+        <div class="exp-panel" id="exp-sfx-1">
+          
+          <div style="font-size:12px;color:var(--muted);padding:4px 0 8px">Paste your SFX list below — one item per line</div>
+          <textarea id="sfx-paste-1" style="width:100%;height:100px;font-size:12px;resize:none" placeholder="Whoosh transition...
+Dramatic boom at 0:08...
+Ambient tension loop..."></textarea>
+          <button onclick="importSfx(1)" style="margin-top:6px;background:linear-gradient(135deg,var(--accent2),#0e7490);color:white;border:none;padding:8px;border-radius:6px;font-size:13px;cursor:pointer;width:100%;font-family:&#39;Bebas Neue&#39;,sans-serif;letter-spacing:2px">IMPORT AS CHECKLIST</button>
+          
+        </div>
+        <div class="exp-panel active" id="exp-analytics-1">
           <div class="analytics-grid">
             <div class="analytics-item">
               <div class="analytics-label">Views</div>
@@ -637,9 +657,11 @@ He didn't surrender. He was relieved.</div>
         </div>
       </div>
       <div class="expanded-section" id="exp-2">
-        <div class="exp-tabs">
+        <div class="exp-tabs" style="flex-wrap:wrap;gap:2px;">
           <button class="exp-tab active" onclick="switchExpTab(2,&#39;script&#39;)">SCRIPT</button>
           <button class="exp-tab" onclick="switchExpTab(2,&#39;shots&#39;)">SHOTS (0/5)</button>
+          <button class="exp-tab" onclick="switchExpTab(2,&#39;broll&#39;)">B-ROLL</button>
+          <button class="exp-tab" onclick="switchExpTab(2,&#39;sfx&#39;)">SFX</button>
           <button class="exp-tab" onclick="switchExpTab(2,&#39;analytics&#39;)">ANALYTICS</button>
         </div>
         <div class="exp-panel active" id="exp-script-2">
@@ -705,6 +727,24 @@ And the last thought they ever have… is that they just want to close their eye
             <button class="add-shot-btn" onclick="addShot(2)">+</button>
           </div>
         </div>
+        <div class="exp-panel" id="exp-broll-2">
+          
+          <div style="font-size:12px;color:var(--muted);padding:4px 0 8px">Paste your b-roll list below — one item per line</div>
+          <textarea id="broll-paste-2" style="width:100%;height:100px;font-size:12px;resize:none" placeholder="Aerial shot of city...
+Close up of hands typing...
+Text card: &#39;Monday morning&#39;..."></textarea>
+          <button onclick="importBroll(2)" style="margin-top:6px;background:linear-gradient(135deg,var(--accent),#5b21b6);color:white;border:none;padding:8px;border-radius:6px;font-size:13px;cursor:pointer;width:100%;font-family:&#39;Bebas Neue&#39;,sans-serif;letter-spacing:2px">IMPORT AS CHECKLIST</button>
+          
+        </div>
+        <div class="exp-panel" id="exp-sfx-2">
+          
+          <div style="font-size:12px;color:var(--muted);padding:4px 0 8px">Paste your SFX list below — one item per line</div>
+          <textarea id="sfx-paste-2" style="width:100%;height:100px;font-size:12px;resize:none" placeholder="Whoosh transition...
+Dramatic boom at 0:08...
+Ambient tension loop..."></textarea>
+          <button onclick="importSfx(2)" style="margin-top:6px;background:linear-gradient(135deg,var(--accent2),#0e7490);color:white;border:none;padding:8px;border-radius:6px;font-size:13px;cursor:pointer;width:100%;font-family:&#39;Bebas Neue&#39;,sans-serif;letter-spacing:2px">IMPORT AS CHECKLIST</button>
+          
+        </div>
         <div class="exp-panel" id="exp-analytics-2">
           <div class="analytics-grid">
             <div class="analytics-item">
@@ -742,9 +782,11 @@ And the last thought they ever have… is that they just want to close their eye
         </div>
       </div>
       <div class="expanded-section" id="exp-3">
-        <div class="exp-tabs">
+        <div class="exp-tabs" style="flex-wrap:wrap;gap:2px;">
           <button class="exp-tab active" onclick="switchExpTab(3,&#39;script&#39;)">SCRIPT</button>
           <button class="exp-tab" onclick="switchExpTab(3,&#39;shots&#39;)">SHOTS (0/6)</button>
+          <button class="exp-tab" onclick="switchExpTab(3,&#39;broll&#39;)">B-ROLL</button>
+          <button class="exp-tab" onclick="switchExpTab(3,&#39;sfx&#39;)">SFX</button>
           <button class="exp-tab" onclick="switchExpTab(3,&#39;analytics&#39;)">ANALYTICS</button>
         </div>
         <div class="exp-panel active" id="exp-script-3">
@@ -818,6 +860,24 @@ The kid who hacked NASA… never got justice himself.</div>
             <button class="add-shot-btn" onclick="addShot(3)">+</button>
           </div>
         </div>
+        <div class="exp-panel" id="exp-broll-3">
+          
+          <div style="font-size:12px;color:var(--muted);padding:4px 0 8px">Paste your b-roll list below — one item per line</div>
+          <textarea id="broll-paste-3" style="width:100%;height:100px;font-size:12px;resize:none" placeholder="Aerial shot of city...
+Close up of hands typing...
+Text card: &#39;Monday morning&#39;..."></textarea>
+          <button onclick="importBroll(3)" style="margin-top:6px;background:linear-gradient(135deg,var(--accent),#5b21b6);color:white;border:none;padding:8px;border-radius:6px;font-size:13px;cursor:pointer;width:100%;font-family:&#39;Bebas Neue&#39;,sans-serif;letter-spacing:2px">IMPORT AS CHECKLIST</button>
+          
+        </div>
+        <div class="exp-panel" id="exp-sfx-3">
+          
+          <div style="font-size:12px;color:var(--muted);padding:4px 0 8px">Paste your SFX list below — one item per line</div>
+          <textarea id="sfx-paste-3" style="width:100%;height:100px;font-size:12px;resize:none" placeholder="Whoosh transition...
+Dramatic boom at 0:08...
+Ambient tension loop..."></textarea>
+          <button onclick="importSfx(3)" style="margin-top:6px;background:linear-gradient(135deg,var(--accent2),#0e7490);color:white;border:none;padding:8px;border-radius:6px;font-size:13px;cursor:pointer;width:100%;font-family:&#39;Bebas Neue&#39;,sans-serif;letter-spacing:2px">IMPORT AS CHECKLIST</button>
+          
+        </div>
         <div class="exp-panel" id="exp-analytics-3">
           <div class="analytics-grid">
             <div class="analytics-item">
@@ -855,9 +915,11 @@ The kid who hacked NASA… never got justice himself.</div>
         </div>
       </div>
       <div class="expanded-section" id="exp-4">
-        <div class="exp-tabs">
+        <div class="exp-tabs" style="flex-wrap:wrap;gap:2px;">
           <button class="exp-tab active" onclick="switchExpTab(4,&#39;script&#39;)">SCRIPT</button>
           <button class="exp-tab" onclick="switchExpTab(4,&#39;shots&#39;)">SHOTS (0/5)</button>
+          <button class="exp-tab" onclick="switchExpTab(4,&#39;broll&#39;)">B-ROLL</button>
+          <button class="exp-tab" onclick="switchExpTab(4,&#39;sfx&#39;)">SFX</button>
           <button class="exp-tab" onclick="switchExpTab(4,&#39;analytics&#39;)">ANALYTICS</button>
         </div>
         <div class="exp-panel active" id="exp-script-4">
@@ -927,6 +989,24 @@ Twice.</div>
             <button class="add-shot-btn" onclick="addShot(4)">+</button>
           </div>
         </div>
+        <div class="exp-panel" id="exp-broll-4">
+          
+          <div style="font-size:12px;color:var(--muted);padding:4px 0 8px">Paste your b-roll list below — one item per line</div>
+          <textarea id="broll-paste-4" style="width:100%;height:100px;font-size:12px;resize:none" placeholder="Aerial shot of city...
+Close up of hands typing...
+Text card: &#39;Monday morning&#39;..."></textarea>
+          <button onclick="importBroll(4)" style="margin-top:6px;background:linear-gradient(135deg,var(--accent),#5b21b6);color:white;border:none;padding:8px;border-radius:6px;font-size:13px;cursor:pointer;width:100%;font-family:&#39;Bebas Neue&#39;,sans-serif;letter-spacing:2px">IMPORT AS CHECKLIST</button>
+          
+        </div>
+        <div class="exp-panel" id="exp-sfx-4">
+          
+          <div style="font-size:12px;color:var(--muted);padding:4px 0 8px">Paste your SFX list below — one item per line</div>
+          <textarea id="sfx-paste-4" style="width:100%;height:100px;font-size:12px;resize:none" placeholder="Whoosh transition...
+Dramatic boom at 0:08...
+Ambient tension loop..."></textarea>
+          <button onclick="importSfx(4)" style="margin-top:6px;background:linear-gradient(135deg,var(--accent2),#0e7490);color:white;border:none;padding:8px;border-radius:6px;font-size:13px;cursor:pointer;width:100%;font-family:&#39;Bebas Neue&#39;,sans-serif;letter-spacing:2px">IMPORT AS CHECKLIST</button>
+          
+        </div>
         <div class="exp-panel" id="exp-analytics-4">
           <div class="analytics-grid">
             <div class="analytics-item">
@@ -964,9 +1044,11 @@ Twice.</div>
         </div>
       </div>
       <div class="expanded-section" id="exp-5">
-        <div class="exp-tabs">
+        <div class="exp-tabs" style="flex-wrap:wrap;gap:2px;">
           <button class="exp-tab active" onclick="switchExpTab(5,&#39;script&#39;)">SCRIPT</button>
           <button class="exp-tab" onclick="switchExpTab(5,&#39;shots&#39;)">SHOTS (0/6)</button>
+          <button class="exp-tab" onclick="switchExpTab(5,&#39;broll&#39;)">B-ROLL</button>
+          <button class="exp-tab" onclick="switchExpTab(5,&#39;sfx&#39;)">SFX</button>
           <button class="exp-tab" onclick="switchExpTab(5,&#39;analytics&#39;)">ANALYTICS</button>
         </div>
         <div class="exp-panel active" id="exp-script-5">
@@ -1040,6 +1122,24 @@ The operation took two hours. The scar lasted a lifetime.</div>
             <button class="add-shot-btn" onclick="addShot(5)">+</button>
           </div>
         </div>
+        <div class="exp-panel" id="exp-broll-5">
+          
+          <div style="font-size:12px;color:var(--muted);padding:4px 0 8px">Paste your b-roll list below — one item per line</div>
+          <textarea id="broll-paste-5" style="width:100%;height:100px;font-size:12px;resize:none" placeholder="Aerial shot of city...
+Close up of hands typing...
+Text card: &#39;Monday morning&#39;..."></textarea>
+          <button onclick="importBroll(5)" style="margin-top:6px;background:linear-gradient(135deg,var(--accent),#5b21b6);color:white;border:none;padding:8px;border-radius:6px;font-size:13px;cursor:pointer;width:100%;font-family:&#39;Bebas Neue&#39;,sans-serif;letter-spacing:2px">IMPORT AS CHECKLIST</button>
+          
+        </div>
+        <div class="exp-panel" id="exp-sfx-5">
+          
+          <div style="font-size:12px;color:var(--muted);padding:4px 0 8px">Paste your SFX list below — one item per line</div>
+          <textarea id="sfx-paste-5" style="width:100%;height:100px;font-size:12px;resize:none" placeholder="Whoosh transition...
+Dramatic boom at 0:08...
+Ambient tension loop..."></textarea>
+          <button onclick="importSfx(5)" style="margin-top:6px;background:linear-gradient(135deg,var(--accent2),#0e7490);color:white;border:none;padding:8px;border-radius:6px;font-size:13px;cursor:pointer;width:100%;font-family:&#39;Bebas Neue&#39;,sans-serif;letter-spacing:2px">IMPORT AS CHECKLIST</button>
+          
+        </div>
         <div class="exp-panel" id="exp-analytics-5">
           <div class="analytics-grid">
             <div class="analytics-item">
@@ -1077,9 +1177,11 @@ The operation took two hours. The scar lasted a lifetime.</div>
         </div>
       </div>
       <div class="expanded-section" id="exp-6">
-        <div class="exp-tabs">
+        <div class="exp-tabs" style="flex-wrap:wrap;gap:2px;">
           <button class="exp-tab active" onclick="switchExpTab(6,&#39;script&#39;)">SCRIPT</button>
           <button class="exp-tab" onclick="switchExpTab(6,&#39;shots&#39;)">SHOTS (0/5)</button>
+          <button class="exp-tab" onclick="switchExpTab(6,&#39;broll&#39;)">B-ROLL</button>
+          <button class="exp-tab" onclick="switchExpTab(6,&#39;sfx&#39;)">SFX</button>
           <button class="exp-tab" onclick="switchExpTab(6,&#39;analytics&#39;)">ANALYTICS</button>
         </div>
         <div class="exp-panel active" id="exp-script-6">
@@ -1145,6 +1247,24 @@ Because one volcano decided to disappear.</div>
             <button class="add-shot-btn" onclick="addShot(6)">+</button>
           </div>
         </div>
+        <div class="exp-panel" id="exp-broll-6">
+          
+          <div style="font-size:12px;color:var(--muted);padding:4px 0 8px">Paste your b-roll list below — one item per line</div>
+          <textarea id="broll-paste-6" style="width:100%;height:100px;font-size:12px;resize:none" placeholder="Aerial shot of city...
+Close up of hands typing...
+Text card: &#39;Monday morning&#39;..."></textarea>
+          <button onclick="importBroll(6)" style="margin-top:6px;background:linear-gradient(135deg,var(--accent),#5b21b6);color:white;border:none;padding:8px;border-radius:6px;font-size:13px;cursor:pointer;width:100%;font-family:&#39;Bebas Neue&#39;,sans-serif;letter-spacing:2px">IMPORT AS CHECKLIST</button>
+          
+        </div>
+        <div class="exp-panel" id="exp-sfx-6">
+          
+          <div style="font-size:12px;color:var(--muted);padding:4px 0 8px">Paste your SFX list below — one item per line</div>
+          <textarea id="sfx-paste-6" style="width:100%;height:100px;font-size:12px;resize:none" placeholder="Whoosh transition...
+Dramatic boom at 0:08...
+Ambient tension loop..."></textarea>
+          <button onclick="importSfx(6)" style="margin-top:6px;background:linear-gradient(135deg,var(--accent2),#0e7490);color:white;border:none;padding:8px;border-radius:6px;font-size:13px;cursor:pointer;width:100%;font-family:&#39;Bebas Neue&#39;,sans-serif;letter-spacing:2px">IMPORT AS CHECKLIST</button>
+          
+        </div>
         <div class="exp-panel" id="exp-analytics-6">
           <div class="analytics-grid">
             <div class="analytics-item">
@@ -1182,9 +1302,11 @@ Because one volcano decided to disappear.</div>
         </div>
       </div>
       <div class="expanded-section" id="exp-7">
-        <div class="exp-tabs">
+        <div class="exp-tabs" style="flex-wrap:wrap;gap:2px;">
           <button class="exp-tab active" onclick="switchExpTab(7,&#39;script&#39;)">SCRIPT</button>
           <button class="exp-tab" onclick="switchExpTab(7,&#39;shots&#39;)">SHOTS (0/5)</button>
+          <button class="exp-tab" onclick="switchExpTab(7,&#39;broll&#39;)">B-ROLL</button>
+          <button class="exp-tab" onclick="switchExpTab(7,&#39;sfx&#39;)">SFX</button>
           <button class="exp-tab" onclick="switchExpTab(7,&#39;analytics&#39;)">ANALYTICS</button>
         </div>
         <div class="exp-panel active" id="exp-script-7">
@@ -1250,6 +1372,24 @@ He had already served 30 years — just not behind bars.</div>
             <button class="add-shot-btn" onclick="addShot(7)">+</button>
           </div>
         </div>
+        <div class="exp-panel" id="exp-broll-7">
+          
+          <div style="font-size:12px;color:var(--muted);padding:4px 0 8px">Paste your b-roll list below — one item per line</div>
+          <textarea id="broll-paste-7" style="width:100%;height:100px;font-size:12px;resize:none" placeholder="Aerial shot of city...
+Close up of hands typing...
+Text card: &#39;Monday morning&#39;..."></textarea>
+          <button onclick="importBroll(7)" style="margin-top:6px;background:linear-gradient(135deg,var(--accent),#5b21b6);color:white;border:none;padding:8px;border-radius:6px;font-size:13px;cursor:pointer;width:100%;font-family:&#39;Bebas Neue&#39;,sans-serif;letter-spacing:2px">IMPORT AS CHECKLIST</button>
+          
+        </div>
+        <div class="exp-panel" id="exp-sfx-7">
+          
+          <div style="font-size:12px;color:var(--muted);padding:4px 0 8px">Paste your SFX list below — one item per line</div>
+          <textarea id="sfx-paste-7" style="width:100%;height:100px;font-size:12px;resize:none" placeholder="Whoosh transition...
+Dramatic boom at 0:08...
+Ambient tension loop..."></textarea>
+          <button onclick="importSfx(7)" style="margin-top:6px;background:linear-gradient(135deg,var(--accent2),#0e7490);color:white;border:none;padding:8px;border-radius:6px;font-size:13px;cursor:pointer;width:100%;font-family:&#39;Bebas Neue&#39;,sans-serif;letter-spacing:2px">IMPORT AS CHECKLIST</button>
+          
+        </div>
         <div class="exp-panel" id="exp-analytics-7">
           <div class="analytics-grid">
             <div class="analytics-item">
@@ -1287,9 +1427,11 @@ He had already served 30 years — just not behind bars.</div>
         </div>
       </div>
       <div class="expanded-section" id="exp-8">
-        <div class="exp-tabs">
+        <div class="exp-tabs" style="flex-wrap:wrap;gap:2px;">
           <button class="exp-tab active" onclick="switchExpTab(8,&#39;script&#39;)">SCRIPT</button>
           <button class="exp-tab" onclick="switchExpTab(8,&#39;shots&#39;)">SHOTS (0/6)</button>
+          <button class="exp-tab" onclick="switchExpTab(8,&#39;broll&#39;)">B-ROLL</button>
+          <button class="exp-tab" onclick="switchExpTab(8,&#39;sfx&#39;)">SFX</button>
           <button class="exp-tab" onclick="switchExpTab(8,&#39;analytics&#39;)">ANALYTICS</button>
         </div>
         <div class="exp-panel active" id="exp-script-8">
@@ -1365,6 +1507,24 @@ This time.</div>
             <button class="add-shot-btn" onclick="addShot(8)">+</button>
           </div>
         </div>
+        <div class="exp-panel" id="exp-broll-8">
+          
+          <div style="font-size:12px;color:var(--muted);padding:4px 0 8px">Paste your b-roll list below — one item per line</div>
+          <textarea id="broll-paste-8" style="width:100%;height:100px;font-size:12px;resize:none" placeholder="Aerial shot of city...
+Close up of hands typing...
+Text card: &#39;Monday morning&#39;..."></textarea>
+          <button onclick="importBroll(8)" style="margin-top:6px;background:linear-gradient(135deg,var(--accent),#5b21b6);color:white;border:none;padding:8px;border-radius:6px;font-size:13px;cursor:pointer;width:100%;font-family:&#39;Bebas Neue&#39;,sans-serif;letter-spacing:2px">IMPORT AS CHECKLIST</button>
+          
+        </div>
+        <div class="exp-panel" id="exp-sfx-8">
+          
+          <div style="font-size:12px;color:var(--muted);padding:4px 0 8px">Paste your SFX list below — one item per line</div>
+          <textarea id="sfx-paste-8" style="width:100%;height:100px;font-size:12px;resize:none" placeholder="Whoosh transition...
+Dramatic boom at 0:08...
+Ambient tension loop..."></textarea>
+          <button onclick="importSfx(8)" style="margin-top:6px;background:linear-gradient(135deg,var(--accent2),#0e7490);color:white;border:none;padding:8px;border-radius:6px;font-size:13px;cursor:pointer;width:100%;font-family:&#39;Bebas Neue&#39;,sans-serif;letter-spacing:2px">IMPORT AS CHECKLIST</button>
+          
+        </div>
         <div class="exp-panel" id="exp-analytics-8">
           <div class="analytics-grid">
             <div class="analytics-item">
@@ -1402,9 +1562,11 @@ This time.</div>
         </div>
       </div>
       <div class="expanded-section" id="exp-9">
-        <div class="exp-tabs">
+        <div class="exp-tabs" style="flex-wrap:wrap;gap:2px;">
           <button class="exp-tab active" onclick="switchExpTab(9,&#39;script&#39;)">SCRIPT</button>
           <button class="exp-tab" onclick="switchExpTab(9,&#39;shots&#39;)">SHOTS (0/5)</button>
+          <button class="exp-tab" onclick="switchExpTab(9,&#39;broll&#39;)">B-ROLL</button>
+          <button class="exp-tab" onclick="switchExpTab(9,&#39;sfx&#39;)">SFX</button>
           <button class="exp-tab" onclick="switchExpTab(9,&#39;analytics&#39;)">ANALYTICS</button>
         </div>
         <div class="exp-panel active" id="exp-script-9">
@@ -1468,6 +1630,24 @@ And sometimes, your own brain takes it away.</div>
             <button class="add-shot-btn" onclick="addShot(9)">+</button>
           </div>
         </div>
+        <div class="exp-panel" id="exp-broll-9">
+          
+          <div style="font-size:12px;color:var(--muted);padding:4px 0 8px">Paste your b-roll list below — one item per line</div>
+          <textarea id="broll-paste-9" style="width:100%;height:100px;font-size:12px;resize:none" placeholder="Aerial shot of city...
+Close up of hands typing...
+Text card: &#39;Monday morning&#39;..."></textarea>
+          <button onclick="importBroll(9)" style="margin-top:6px;background:linear-gradient(135deg,var(--accent),#5b21b6);color:white;border:none;padding:8px;border-radius:6px;font-size:13px;cursor:pointer;width:100%;font-family:&#39;Bebas Neue&#39;,sans-serif;letter-spacing:2px">IMPORT AS CHECKLIST</button>
+          
+        </div>
+        <div class="exp-panel" id="exp-sfx-9">
+          
+          <div style="font-size:12px;color:var(--muted);padding:4px 0 8px">Paste your SFX list below — one item per line</div>
+          <textarea id="sfx-paste-9" style="width:100%;height:100px;font-size:12px;resize:none" placeholder="Whoosh transition...
+Dramatic boom at 0:08...
+Ambient tension loop..."></textarea>
+          <button onclick="importSfx(9)" style="margin-top:6px;background:linear-gradient(135deg,var(--accent2),#0e7490);color:white;border:none;padding:8px;border-radius:6px;font-size:13px;cursor:pointer;width:100%;font-family:&#39;Bebas Neue&#39;,sans-serif;letter-spacing:2px">IMPORT AS CHECKLIST</button>
+          
+        </div>
         <div class="exp-panel" id="exp-analytics-9">
           <div class="analytics-grid">
             <div class="analytics-item">
@@ -1505,9 +1685,11 @@ And sometimes, your own brain takes it away.</div>
         </div>
       </div>
       <div class="expanded-section" id="exp-10">
-        <div class="exp-tabs">
+        <div class="exp-tabs" style="flex-wrap:wrap;gap:2px;">
           <button class="exp-tab active" onclick="switchExpTab(10,&#39;script&#39;)">SCRIPT</button>
           <button class="exp-tab" onclick="switchExpTab(10,&#39;shots&#39;)">SHOTS (0/5)</button>
+          <button class="exp-tab" onclick="switchExpTab(10,&#39;broll&#39;)">B-ROLL</button>
+          <button class="exp-tab" onclick="switchExpTab(10,&#39;sfx&#39;)">SFX</button>
           <button class="exp-tab" onclick="switchExpTab(10,&#39;analytics&#39;)">ANALYTICS</button>
         </div>
         <div class="exp-panel active" id="exp-script-10">
@@ -1577,6 +1759,24 @@ All because someone didn't ask permission.</div>
             <button class="add-shot-btn" onclick="addShot(10)">+</button>
           </div>
         </div>
+        <div class="exp-panel" id="exp-broll-10">
+          
+          <div style="font-size:12px;color:var(--muted);padding:4px 0 8px">Paste your b-roll list below — one item per line</div>
+          <textarea id="broll-paste-10" style="width:100%;height:100px;font-size:12px;resize:none" placeholder="Aerial shot of city...
+Close up of hands typing...
+Text card: &#39;Monday morning&#39;..."></textarea>
+          <button onclick="importBroll(10)" style="margin-top:6px;background:linear-gradient(135deg,var(--accent),#5b21b6);color:white;border:none;padding:8px;border-radius:6px;font-size:13px;cursor:pointer;width:100%;font-family:&#39;Bebas Neue&#39;,sans-serif;letter-spacing:2px">IMPORT AS CHECKLIST</button>
+          
+        </div>
+        <div class="exp-panel" id="exp-sfx-10">
+          
+          <div style="font-size:12px;color:var(--muted);padding:4px 0 8px">Paste your SFX list below — one item per line</div>
+          <textarea id="sfx-paste-10" style="width:100%;height:100px;font-size:12px;resize:none" placeholder="Whoosh transition...
+Dramatic boom at 0:08...
+Ambient tension loop..."></textarea>
+          <button onclick="importSfx(10)" style="margin-top:6px;background:linear-gradient(135deg,var(--accent2),#0e7490);color:white;border:none;padding:8px;border-radius:6px;font-size:13px;cursor:pointer;width:100%;font-family:&#39;Bebas Neue&#39;,sans-serif;letter-spacing:2px">IMPORT AS CHECKLIST</button>
+          
+        </div>
         <div class="exp-panel" id="exp-analytics-10">
           <div class="analytics-grid">
             <div class="analytics-item">
@@ -1614,9 +1814,11 @@ All because someone didn't ask permission.</div>
         </div>
       </div>
       <div class="expanded-section" id="exp-11">
-        <div class="exp-tabs">
+        <div class="exp-tabs" style="flex-wrap:wrap;gap:2px;">
           <button class="exp-tab active" onclick="switchExpTab(11,&#39;script&#39;)">SCRIPT</button>
           <button class="exp-tab" onclick="switchExpTab(11,&#39;shots&#39;)">SHOTS (0/6)</button>
+          <button class="exp-tab" onclick="switchExpTab(11,&#39;broll&#39;)">B-ROLL</button>
+          <button class="exp-tab" onclick="switchExpTab(11,&#39;sfx&#39;)">SFX</button>
           <button class="exp-tab" onclick="switchExpTab(11,&#39;analytics&#39;)">ANALYTICS</button>
         </div>
         <div class="exp-panel active" id="exp-script-11">
@@ -1692,6 +1894,24 @@ The last time a storm this size hit Earth… we had horses.</div>
             <button class="add-shot-btn" onclick="addShot(11)">+</button>
           </div>
         </div>
+        <div class="exp-panel" id="exp-broll-11">
+          
+          <div style="font-size:12px;color:var(--muted);padding:4px 0 8px">Paste your b-roll list below — one item per line</div>
+          <textarea id="broll-paste-11" style="width:100%;height:100px;font-size:12px;resize:none" placeholder="Aerial shot of city...
+Close up of hands typing...
+Text card: &#39;Monday morning&#39;..."></textarea>
+          <button onclick="importBroll(11)" style="margin-top:6px;background:linear-gradient(135deg,var(--accent),#5b21b6);color:white;border:none;padding:8px;border-radius:6px;font-size:13px;cursor:pointer;width:100%;font-family:&#39;Bebas Neue&#39;,sans-serif;letter-spacing:2px">IMPORT AS CHECKLIST</button>
+          
+        </div>
+        <div class="exp-panel" id="exp-sfx-11">
+          
+          <div style="font-size:12px;color:var(--muted);padding:4px 0 8px">Paste your SFX list below — one item per line</div>
+          <textarea id="sfx-paste-11" style="width:100%;height:100px;font-size:12px;resize:none" placeholder="Whoosh transition...
+Dramatic boom at 0:08...
+Ambient tension loop..."></textarea>
+          <button onclick="importSfx(11)" style="margin-top:6px;background:linear-gradient(135deg,var(--accent2),#0e7490);color:white;border:none;padding:8px;border-radius:6px;font-size:13px;cursor:pointer;width:100%;font-family:&#39;Bebas Neue&#39;,sans-serif;letter-spacing:2px">IMPORT AS CHECKLIST</button>
+          
+        </div>
         <div class="exp-panel" id="exp-analytics-11">
           <div class="analytics-grid">
             <div class="analytics-item">
@@ -1729,9 +1949,11 @@ The last time a storm this size hit Earth… we had horses.</div>
         </div>
       </div>
       <div class="expanded-section" id="exp-12">
-        <div class="exp-tabs">
+        <div class="exp-tabs" style="flex-wrap:wrap;gap:2px;">
           <button class="exp-tab active" onclick="switchExpTab(12,&#39;script&#39;)">SCRIPT</button>
           <button class="exp-tab" onclick="switchExpTab(12,&#39;shots&#39;)">SHOTS (0/7)</button>
+          <button class="exp-tab" onclick="switchExpTab(12,&#39;broll&#39;)">B-ROLL</button>
+          <button class="exp-tab" onclick="switchExpTab(12,&#39;sfx&#39;)">SFX</button>
           <button class="exp-tab" onclick="switchExpTab(12,&#39;analytics&#39;)">ANALYTICS</button>
         </div>
         <div class="exp-panel active" id="exp-script-12">
@@ -1813,6 +2035,24 @@ We may have just found the blueprint for where to look next.</div>
             <button class="add-shot-btn" onclick="addShot(12)">+</button>
           </div>
         </div>
+        <div class="exp-panel" id="exp-broll-12">
+          
+          <div style="font-size:12px;color:var(--muted);padding:4px 0 8px">Paste your b-roll list below — one item per line</div>
+          <textarea id="broll-paste-12" style="width:100%;height:100px;font-size:12px;resize:none" placeholder="Aerial shot of city...
+Close up of hands typing...
+Text card: &#39;Monday morning&#39;..."></textarea>
+          <button onclick="importBroll(12)" style="margin-top:6px;background:linear-gradient(135deg,var(--accent),#5b21b6);color:white;border:none;padding:8px;border-radius:6px;font-size:13px;cursor:pointer;width:100%;font-family:&#39;Bebas Neue&#39;,sans-serif;letter-spacing:2px">IMPORT AS CHECKLIST</button>
+          
+        </div>
+        <div class="exp-panel" id="exp-sfx-12">
+          
+          <div style="font-size:12px;color:var(--muted);padding:4px 0 8px">Paste your SFX list below — one item per line</div>
+          <textarea id="sfx-paste-12" style="width:100%;height:100px;font-size:12px;resize:none" placeholder="Whoosh transition...
+Dramatic boom at 0:08...
+Ambient tension loop..."></textarea>
+          <button onclick="importSfx(12)" style="margin-top:6px;background:linear-gradient(135deg,var(--accent2),#0e7490);color:white;border:none;padding:8px;border-radius:6px;font-size:13px;cursor:pointer;width:100%;font-family:&#39;Bebas Neue&#39;,sans-serif;letter-spacing:2px">IMPORT AS CHECKLIST</button>
+          
+        </div>
         <div class="exp-panel" id="exp-analytics-12">
           <div class="analytics-grid">
             <div class="analytics-item">
@@ -1850,9 +2090,11 @@ We may have just found the blueprint for where to look next.</div>
         </div>
       </div>
       <div class="expanded-section" id="exp-13">
-        <div class="exp-tabs">
+        <div class="exp-tabs" style="flex-wrap:wrap;gap:2px;">
           <button class="exp-tab active" onclick="switchExpTab(13,&#39;script&#39;)">SCRIPT</button>
           <button class="exp-tab" onclick="switchExpTab(13,&#39;shots&#39;)">SHOTS (0/6)</button>
+          <button class="exp-tab" onclick="switchExpTab(13,&#39;broll&#39;)">B-ROLL</button>
+          <button class="exp-tab" onclick="switchExpTab(13,&#39;sfx&#39;)">SFX</button>
           <button class="exp-tab" onclick="switchExpTab(13,&#39;analytics&#39;)">ANALYTICS</button>
         </div>
         <div class="exp-panel active" id="exp-script-13">
@@ -1930,6 +2172,24 @@ Your own body, quietly, permanently, turning you to stone.</div>
             <button class="add-shot-btn" onclick="addShot(13)">+</button>
           </div>
         </div>
+        <div class="exp-panel" id="exp-broll-13">
+          
+          <div style="font-size:12px;color:var(--muted);padding:4px 0 8px">Paste your b-roll list below — one item per line</div>
+          <textarea id="broll-paste-13" style="width:100%;height:100px;font-size:12px;resize:none" placeholder="Aerial shot of city...
+Close up of hands typing...
+Text card: &#39;Monday morning&#39;..."></textarea>
+          <button onclick="importBroll(13)" style="margin-top:6px;background:linear-gradient(135deg,var(--accent),#5b21b6);color:white;border:none;padding:8px;border-radius:6px;font-size:13px;cursor:pointer;width:100%;font-family:&#39;Bebas Neue&#39;,sans-serif;letter-spacing:2px">IMPORT AS CHECKLIST</button>
+          
+        </div>
+        <div class="exp-panel" id="exp-sfx-13">
+          
+          <div style="font-size:12px;color:var(--muted);padding:4px 0 8px">Paste your SFX list below — one item per line</div>
+          <textarea id="sfx-paste-13" style="width:100%;height:100px;font-size:12px;resize:none" placeholder="Whoosh transition...
+Dramatic boom at 0:08...
+Ambient tension loop..."></textarea>
+          <button onclick="importSfx(13)" style="margin-top:6px;background:linear-gradient(135deg,var(--accent2),#0e7490);color:white;border:none;padding:8px;border-radius:6px;font-size:13px;cursor:pointer;width:100%;font-family:&#39;Bebas Neue&#39;,sans-serif;letter-spacing:2px">IMPORT AS CHECKLIST</button>
+          
+        </div>
         <div class="exp-panel" id="exp-analytics-13">
           <div class="analytics-grid">
             <div class="analytics-item">
@@ -1959,17 +2219,19 @@ Your own body, quietly, permanently, turning you to stone.</div>
             </div>
             <div class="card-actions">
               <button class="expand-btn" onclick="toggleExpand(14)">
-                📋 Script &amp; Shots (0/6) ▲
+                📋 Script &amp; Shots (0/6) ▼
               </button>
               <button class="delete-btn" onclick="delVideo(14)">✕</button>
             </div>
           </div>
         </div>
       </div>
-      <div class="expanded-section open" id="exp-14">
-        <div class="exp-tabs">
+      <div class="expanded-section" id="exp-14">
+        <div class="exp-tabs" style="flex-wrap:wrap;gap:2px;">
           <button class="exp-tab active" onclick="switchExpTab(14,&#39;script&#39;)">SCRIPT</button>
           <button class="exp-tab" onclick="switchExpTab(14,&#39;shots&#39;)">SHOTS (0/6)</button>
+          <button class="exp-tab" onclick="switchExpTab(14,&#39;broll&#39;)">B-ROLL</button>
+          <button class="exp-tab" onclick="switchExpTab(14,&#39;sfx&#39;)">SFX</button>
           <button class="exp-tab" onclick="switchExpTab(14,&#39;analytics&#39;)">ANALYTICS</button>
         </div>
         <div class="exp-panel active" id="exp-script-14">
@@ -2041,6 +2303,24 @@ He had to fight the government just to exist.</div>
             <button class="add-shot-btn" onclick="addShot(14)">+</button>
           </div>
         </div>
+        <div class="exp-panel" id="exp-broll-14">
+          
+          <div style="font-size:12px;color:var(--muted);padding:4px 0 8px">Paste your b-roll list below — one item per line</div>
+          <textarea id="broll-paste-14" style="width:100%;height:100px;font-size:12px;resize:none" placeholder="Aerial shot of city...
+Close up of hands typing...
+Text card: &#39;Monday morning&#39;..."></textarea>
+          <button onclick="importBroll(14)" style="margin-top:6px;background:linear-gradient(135deg,var(--accent),#5b21b6);color:white;border:none;padding:8px;border-radius:6px;font-size:13px;cursor:pointer;width:100%;font-family:&#39;Bebas Neue&#39;,sans-serif;letter-spacing:2px">IMPORT AS CHECKLIST</button>
+          
+        </div>
+        <div class="exp-panel" id="exp-sfx-14">
+          
+          <div style="font-size:12px;color:var(--muted);padding:4px 0 8px">Paste your SFX list below — one item per line</div>
+          <textarea id="sfx-paste-14" style="width:100%;height:100px;font-size:12px;resize:none" placeholder="Whoosh transition...
+Dramatic boom at 0:08...
+Ambient tension loop..."></textarea>
+          <button onclick="importSfx(14)" style="margin-top:6px;background:linear-gradient(135deg,var(--accent2),#0e7490);color:white;border:none;padding:8px;border-radius:6px;font-size:13px;cursor:pointer;width:100%;font-family:&#39;Bebas Neue&#39;,sans-serif;letter-spacing:2px">IMPORT AS CHECKLIST</button>
+          
+        </div>
         <div class="exp-panel" id="exp-analytics-14">
           <div class="analytics-grid">
             <div class="analytics-item">
@@ -2078,9 +2358,11 @@ He had to fight the government just to exist.</div>
         </div>
       </div>
       <div class="expanded-section" id="exp-15">
-        <div class="exp-tabs">
+        <div class="exp-tabs" style="flex-wrap:wrap;gap:2px;">
           <button class="exp-tab active" onclick="switchExpTab(15,&#39;script&#39;)">SCRIPT</button>
           <button class="exp-tab" onclick="switchExpTab(15,&#39;shots&#39;)">SHOTS (0/6)</button>
+          <button class="exp-tab" onclick="switchExpTab(15,&#39;broll&#39;)">B-ROLL</button>
+          <button class="exp-tab" onclick="switchExpTab(15,&#39;sfx&#39;)">SFX</button>
           <button class="exp-tab" onclick="switchExpTab(15,&#39;analytics&#39;)">ANALYTICS</button>
         </div>
         <div class="exp-panel active" id="exp-script-15">
@@ -2154,6 +2436,24 @@ Somewhere out there, someone is living off the cleanest heist ever pulled.</div>
             <button class="add-shot-btn" onclick="addShot(15)">+</button>
           </div>
         </div>
+        <div class="exp-panel" id="exp-broll-15">
+          
+          <div style="font-size:12px;color:var(--muted);padding:4px 0 8px">Paste your b-roll list below — one item per line</div>
+          <textarea id="broll-paste-15" style="width:100%;height:100px;font-size:12px;resize:none" placeholder="Aerial shot of city...
+Close up of hands typing...
+Text card: &#39;Monday morning&#39;..."></textarea>
+          <button onclick="importBroll(15)" style="margin-top:6px;background:linear-gradient(135deg,var(--accent),#5b21b6);color:white;border:none;padding:8px;border-radius:6px;font-size:13px;cursor:pointer;width:100%;font-family:&#39;Bebas Neue&#39;,sans-serif;letter-spacing:2px">IMPORT AS CHECKLIST</button>
+          
+        </div>
+        <div class="exp-panel" id="exp-sfx-15">
+          
+          <div style="font-size:12px;color:var(--muted);padding:4px 0 8px">Paste your SFX list below — one item per line</div>
+          <textarea id="sfx-paste-15" style="width:100%;height:100px;font-size:12px;resize:none" placeholder="Whoosh transition...
+Dramatic boom at 0:08...
+Ambient tension loop..."></textarea>
+          <button onclick="importSfx(15)" style="margin-top:6px;background:linear-gradient(135deg,var(--accent2),#0e7490);color:white;border:none;padding:8px;border-radius:6px;font-size:13px;cursor:pointer;width:100%;font-family:&#39;Bebas Neue&#39;,sans-serif;letter-spacing:2px">IMPORT AS CHECKLIST</button>
+          
+        </div>
         <div class="exp-panel" id="exp-analytics-15">
           <div class="analytics-grid">
             <div class="analytics-item">
@@ -2191,9 +2491,11 @@ Somewhere out there, someone is living off the cleanest heist ever pulled.</div>
         </div>
       </div>
       <div class="expanded-section" id="exp-16">
-        <div class="exp-tabs">
+        <div class="exp-tabs" style="flex-wrap:wrap;gap:2px;">
           <button class="exp-tab active" onclick="switchExpTab(16,&#39;script&#39;)">SCRIPT</button>
           <button class="exp-tab" onclick="switchExpTab(16,&#39;shots&#39;)">SHOTS (0/6)</button>
+          <button class="exp-tab" onclick="switchExpTab(16,&#39;broll&#39;)">B-ROLL</button>
+          <button class="exp-tab" onclick="switchExpTab(16,&#39;sfx&#39;)">SFX</button>
           <button class="exp-tab" onclick="switchExpTab(16,&#39;analytics&#39;)">ANALYTICS</button>
         </div>
         <div class="exp-panel active" id="exp-script-16">
@@ -2265,6 +2567,24 @@ By a dead man with a fake name and borrowed clothes.</div>
             <button class="add-shot-btn" onclick="addShot(16)">+</button>
           </div>
         </div>
+        <div class="exp-panel" id="exp-broll-16">
+          
+          <div style="font-size:12px;color:var(--muted);padding:4px 0 8px">Paste your b-roll list below — one item per line</div>
+          <textarea id="broll-paste-16" style="width:100%;height:100px;font-size:12px;resize:none" placeholder="Aerial shot of city...
+Close up of hands typing...
+Text card: &#39;Monday morning&#39;..."></textarea>
+          <button onclick="importBroll(16)" style="margin-top:6px;background:linear-gradient(135deg,var(--accent),#5b21b6);color:white;border:none;padding:8px;border-radius:6px;font-size:13px;cursor:pointer;width:100%;font-family:&#39;Bebas Neue&#39;,sans-serif;letter-spacing:2px">IMPORT AS CHECKLIST</button>
+          
+        </div>
+        <div class="exp-panel" id="exp-sfx-16">
+          
+          <div style="font-size:12px;color:var(--muted);padding:4px 0 8px">Paste your SFX list below — one item per line</div>
+          <textarea id="sfx-paste-16" style="width:100%;height:100px;font-size:12px;resize:none" placeholder="Whoosh transition...
+Dramatic boom at 0:08...
+Ambient tension loop..."></textarea>
+          <button onclick="importSfx(16)" style="margin-top:6px;background:linear-gradient(135deg,var(--accent2),#0e7490);color:white;border:none;padding:8px;border-radius:6px;font-size:13px;cursor:pointer;width:100%;font-family:&#39;Bebas Neue&#39;,sans-serif;letter-spacing:2px">IMPORT AS CHECKLIST</button>
+          
+        </div>
         <div class="exp-panel" id="exp-analytics-16">
           <div class="analytics-grid">
             <div class="analytics-item">
@@ -2302,9 +2622,11 @@ By a dead man with a fake name and borrowed clothes.</div>
         </div>
       </div>
       <div class="expanded-section" id="exp-17">
-        <div class="exp-tabs">
+        <div class="exp-tabs" style="flex-wrap:wrap;gap:2px;">
           <button class="exp-tab active" onclick="switchExpTab(17,&#39;script&#39;)">SCRIPT</button>
           <button class="exp-tab" onclick="switchExpTab(17,&#39;shots&#39;)">SHOTS (0/6)</button>
+          <button class="exp-tab" onclick="switchExpTab(17,&#39;broll&#39;)">B-ROLL</button>
+          <button class="exp-tab" onclick="switchExpTab(17,&#39;sfx&#39;)">SFX</button>
           <button class="exp-tab" onclick="switchExpTab(17,&#39;analytics&#39;)">ANALYTICS</button>
         </div>
         <div class="exp-panel active" id="exp-script-17">
@@ -2376,6 +2698,24 @@ The most indestructible thing on the planet is something you've never seen.</div
             <button class="add-shot-btn" onclick="addShot(17)">+</button>
           </div>
         </div>
+        <div class="exp-panel" id="exp-broll-17">
+          
+          <div style="font-size:12px;color:var(--muted);padding:4px 0 8px">Paste your b-roll list below — one item per line</div>
+          <textarea id="broll-paste-17" style="width:100%;height:100px;font-size:12px;resize:none" placeholder="Aerial shot of city...
+Close up of hands typing...
+Text card: &#39;Monday morning&#39;..."></textarea>
+          <button onclick="importBroll(17)" style="margin-top:6px;background:linear-gradient(135deg,var(--accent),#5b21b6);color:white;border:none;padding:8px;border-radius:6px;font-size:13px;cursor:pointer;width:100%;font-family:&#39;Bebas Neue&#39;,sans-serif;letter-spacing:2px">IMPORT AS CHECKLIST</button>
+          
+        </div>
+        <div class="exp-panel" id="exp-sfx-17">
+          
+          <div style="font-size:12px;color:var(--muted);padding:4px 0 8px">Paste your SFX list below — one item per line</div>
+          <textarea id="sfx-paste-17" style="width:100%;height:100px;font-size:12px;resize:none" placeholder="Whoosh transition...
+Dramatic boom at 0:08...
+Ambient tension loop..."></textarea>
+          <button onclick="importSfx(17)" style="margin-top:6px;background:linear-gradient(135deg,var(--accent2),#0e7490);color:white;border:none;padding:8px;border-radius:6px;font-size:13px;cursor:pointer;width:100%;font-family:&#39;Bebas Neue&#39;,sans-serif;letter-spacing:2px">IMPORT AS CHECKLIST</button>
+          
+        </div>
         <div class="exp-panel" id="exp-analytics-17">
           <div class="analytics-grid">
             <div class="analytics-item">
@@ -2413,9 +2753,11 @@ The most indestructible thing on the planet is something you've never seen.</div
         </div>
       </div>
       <div class="expanded-section" id="exp-18">
-        <div class="exp-tabs">
+        <div class="exp-tabs" style="flex-wrap:wrap;gap:2px;">
           <button class="exp-tab active" onclick="switchExpTab(18,&#39;script&#39;)">SCRIPT</button>
           <button class="exp-tab" onclick="switchExpTab(18,&#39;shots&#39;)">SHOTS (0/7)</button>
+          <button class="exp-tab" onclick="switchExpTab(18,&#39;broll&#39;)">B-ROLL</button>
+          <button class="exp-tab" onclick="switchExpTab(18,&#39;sfx&#39;)">SFX</button>
           <button class="exp-tab" onclick="switchExpTab(18,&#39;analytics&#39;)">ANALYTICS</button>
         </div>
         <div class="exp-panel active" id="exp-script-18">
@@ -2496,6 +2838,24 @@ Nobody knows exactly when it will happen again.</div>
             <input id="shot-in-18" type="text" placeholder="Add shot description..." onkeydown="if(event.key===&#39;Enter&#39;)addShot(18)">
             <button class="add-shot-btn" onclick="addShot(18)">+</button>
           </div>
+        </div>
+        <div class="exp-panel" id="exp-broll-18">
+          
+          <div style="font-size:12px;color:var(--muted);padding:4px 0 8px">Paste your b-roll list below — one item per line</div>
+          <textarea id="broll-paste-18" style="width:100%;height:100px;font-size:12px;resize:none" placeholder="Aerial shot of city...
+Close up of hands typing...
+Text card: &#39;Monday morning&#39;..."></textarea>
+          <button onclick="importBroll(18)" style="margin-top:6px;background:linear-gradient(135deg,var(--accent),#5b21b6);color:white;border:none;padding:8px;border-radius:6px;font-size:13px;cursor:pointer;width:100%;font-family:&#39;Bebas Neue&#39;,sans-serif;letter-spacing:2px">IMPORT AS CHECKLIST</button>
+          
+        </div>
+        <div class="exp-panel" id="exp-sfx-18">
+          
+          <div style="font-size:12px;color:var(--muted);padding:4px 0 8px">Paste your SFX list below — one item per line</div>
+          <textarea id="sfx-paste-18" style="width:100%;height:100px;font-size:12px;resize:none" placeholder="Whoosh transition...
+Dramatic boom at 0:08...
+Ambient tension loop..."></textarea>
+          <button onclick="importSfx(18)" style="margin-top:6px;background:linear-gradient(135deg,var(--accent2),#0e7490);color:white;border:none;padding:8px;border-radius:6px;font-size:13px;cursor:pointer;width:100%;font-family:&#39;Bebas Neue&#39;,sans-serif;letter-spacing:2px">IMPORT AS CHECKLIST</button>
+          
         </div>
         <div class="exp-panel" id="exp-analytics-18">
           <div class="analytics-grid">
@@ -3329,9 +3689,11 @@ function render() {
         </div>
       </div>
       <div class="expanded-section${isOpen?' open':''}" id="exp-${v.id}">
-        <div class="exp-tabs">
+        <div class="exp-tabs" style="flex-wrap:wrap;gap:2px;">
           <button class="exp-tab${activeTab==='script'?' active':''}" onclick="switchExpTab(${v.id},'script')">SCRIPT</button>
           <button class="exp-tab${activeTab==='shots'?' active':''}" onclick="switchExpTab(${v.id},'shots')">SHOTS (${shotsDone}/${shots.length})</button>
+          <button class="exp-tab${activeTab==='broll'?' active':''}" onclick="switchExpTab(${v.id},'broll')">B-ROLL</button>
+          <button class="exp-tab${activeTab==='sfx'?' active':''}" onclick="switchExpTab(${v.id},'sfx')">SFX</button>
           <button class="exp-tab${activeTab==='analytics'?' active':''}" onclick="switchExpTab(${v.id},'analytics')">ANALYTICS</button>
         </div>
         <div class="exp-panel${activeTab==='script'?' active':''}" id="exp-script-${v.id}">
@@ -3358,6 +3720,42 @@ function render() {
             <input id="shot-in-${v.id}" type="text" placeholder="Add shot description..." onkeydown="if(event.key==='Enter')addShot(${v.id})" />
             <button class="add-shot-btn" onclick="addShot(${v.id})">+</button>
           </div>
+        </div>
+        <div class="exp-panel${activeTab==='broll'?' active':''}" id="exp-broll-${v.id}">
+          ${(v.broll&&v.broll.length) ? `
+          <div class="shot-items">
+            ${v.broll.map((b,i)=>`
+              <div class="shot-item${b.done?' shot-done':''}">
+                <span class="shot-num">${i+1}</span>
+                <button class="shot-check" onclick="toggleBroll(${v.id},${b.id})">${b.done?'✓':''}</button>
+                <span class="shot-text">${b.text}</span>
+                <button class="shot-delete" onclick="delBroll(${v.id},${b.id})">✕</button>
+              </div>`).join('')}
+          </div>
+          <button onclick="clearAndPasteBroll(${v.id})" style="margin-top:8px;background:var(--dim);border:1px solid var(--border);color:var(--muted);padding:6px 10px;border-radius:6px;font-size:11px;cursor:pointer;width:100%">↺ Paste new list</button>
+          ` : `
+          <div style="font-size:12px;color:var(--muted);padding:4px 0 8px">Paste your b-roll list below — one item per line</div>
+          <textarea id="broll-paste-${v.id}" style="width:100%;height:100px;font-size:12px;resize:none" placeholder="Aerial shot of city...\nClose up of hands typing...\nText card: 'Monday morning'..."></textarea>
+          <button onclick="importBroll(${v.id})" style="margin-top:6px;background:linear-gradient(135deg,var(--accent),#5b21b6);color:white;border:none;padding:8px;border-radius:6px;font-size:13px;cursor:pointer;width:100%;font-family:'Bebas Neue',sans-serif;letter-spacing:2px">IMPORT AS CHECKLIST</button>
+          `}
+        </div>
+        <div class="exp-panel${activeTab==='sfx'?' active':''}" id="exp-sfx-${v.id}">
+          ${(v.sfx&&v.sfx.length) ? `
+          <div class="shot-items">
+            ${v.sfx.map((s,i)=>`
+              <div class="shot-item${s.done?' shot-done':''}">
+                <span class="shot-num">${i+1}</span>
+                <button class="shot-check" onclick="toggleSfx(${v.id},${s.id})">${s.done?'✓':''}</button>
+                <span class="shot-text">${s.text}</span>
+                <button class="shot-delete" onclick="delSfx(${v.id},${s.id})">✕</button>
+              </div>`).join('')}
+          </div>
+          <button onclick="clearAndPasteSfx(${v.id})" style="margin-top:8px;background:var(--dim);border:1px solid var(--border);color:var(--muted);padding:6px 10px;border-radius:6px;font-size:11px;cursor:pointer;width:100%">↺ Paste new list</button>
+          ` : `
+          <div style="font-size:12px;color:var(--muted);padding:4px 0 8px">Paste your SFX list below — one item per line</div>
+          <textarea id="sfx-paste-${v.id}" style="width:100%;height:100px;font-size:12px;resize:none" placeholder="Whoosh transition...\nDramatic boom at 0:08...\nAmbient tension loop..."></textarea>
+          <button onclick="importSfx(${v.id})" style="margin-top:6px;background:linear-gradient(135deg,var(--accent2),#0e7490);color:white;border:none;padding:8px;border-radius:6px;font-size:13px;cursor:pointer;width:100%;font-family:'Bebas Neue',sans-serif;letter-spacing:2px">IMPORT AS CHECKLIST</button>
+          `}
         </div>
         <div class="exp-panel${activeTab==='analytics'?' active':''}" id="exp-analytics-${v.id}">
           <div class="analytics-grid">
@@ -3449,6 +3847,48 @@ function toggleShot(vid,sid) {
 function delShot(vid,sid) {
   const v=videos.find(x=>x.id===vid); if(!v)return;
   v.shots=v.shots.filter(s=>s.id!==sid); save();render();
+}
+
+// ---- B-ROLL ----
+function importBroll(id) {
+  const ta=document.getElementById(`broll-paste-${id}`); if(!ta)return;
+  const lines=ta.value.split('\n').map(l=>l.trim()).filter(Boolean);
+  const v=videos.find(x=>x.id===id); if(!v)return;
+  v.broll=lines.map((text,i)=>({id:i+1,text,done:false}));
+  save(); render();
+}
+function clearAndPasteBroll(id) {
+  const v=videos.find(x=>x.id===id); if(!v)return;
+  v.broll=[]; save(); render();
+}
+function toggleBroll(vid,bid) {
+  const v=videos.find(x=>x.id===vid); if(!v||!v.broll)return;
+  const b=v.broll.find(x=>x.id===bid); if(b){b.done=!b.done;save();render();}
+}
+function delBroll(vid,bid) {
+  const v=videos.find(x=>x.id===vid); if(!v)return;
+  v.broll=v.broll.filter(b=>b.id!==bid); save();render();
+}
+
+// ---- SFX ----
+function importSfx(id) {
+  const ta=document.getElementById(`sfx-paste-${id}`); if(!ta)return;
+  const lines=ta.value.split('\n').map(l=>l.trim()).filter(Boolean);
+  const v=videos.find(x=>x.id===id); if(!v)return;
+  v.sfx=lines.map((text,i)=>({id:i+1,text,done:false}));
+  save(); render();
+}
+function clearAndPasteSfx(id) {
+  const v=videos.find(x=>x.id===id); if(!v)return;
+  v.sfx=[]; save(); render();
+}
+function toggleSfx(vid,sid) {
+  const v=videos.find(x=>x.id===vid); if(!v||!v.sfx)return;
+  const s=v.sfx.find(x=>x.id===sid); if(s){s.done=!s.done;save();render();}
+}
+function delSfx(vid,sid) {
+  const v=videos.find(x=>x.id===vid); if(!v)return;
+  v.sfx=v.sfx.filter(s=>s.id!==sid); save();render();
 }
 
 function updateAnalytic(id, field, val) {
